@@ -14,4 +14,13 @@
     Take a look at the <code>src/pages/</code> directory to add or change tabs,
     update any existing page or create new pages.
   </p>
+
+  <p>
+    {{ date | date : format : timezone}} <!-- https://docs.angularjs.org/api/ng/filter/date -->
+  </p>
+ 
+  <p>
+    <button ion-button (click)="clearCache()">Clear FirstStart</button>
+  </p>
+
 </ion-content>

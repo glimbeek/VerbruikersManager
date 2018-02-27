@@ -7,5 +7,9 @@
 </ion-header>
 
 <ion-content padding>
-
+    <ion-list>
+        <ion-item *ngFor="let countries of countriesList">
+          {{countries.name}}
+        </ion-item>
+      </ion-list>
 </ion-content>
