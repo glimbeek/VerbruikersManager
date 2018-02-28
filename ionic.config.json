@@ -1,6 +1,6 @@
 {
   "name": "app.Verbruiksmanager",
-  "app_id": "0f75e043",
+  "app_id": "34645d4a",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
