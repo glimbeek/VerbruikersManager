@@ -26,13 +26,33 @@
     background: #2980b9;
   }
 
+  @media all and (orientation:portrait) {
+     /* Styles for Portrait screen */
+
+    .introText {
+      margin: 40% auto 30%;
+    }
+
+    .spinner {
+      margin: 0% auto;
+    }
+  }
+
+  @media all and (orientation:landscape) {
+    /* Styles for Landscape screen */
+    .introText {
+      margin: 10% auto;
+    }
+
+    .spinner {
+      margin: 0% auto;
+    }
+  } 
 
   .introText {
-    // vertical-align: text-bottom;
-    margin: 100px auto;
+    // margin: 35% auto;
     text-align: center;
     color: #fff;    
-    margin: 150px auto;
     font-size: 250%;
     // font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -41,7 +61,7 @@
 
 
   .spinner {
-    margin: 100px auto;
+    // margin: 10% auto;
     width: 40px;
     height: 40px;
     position: relative;
