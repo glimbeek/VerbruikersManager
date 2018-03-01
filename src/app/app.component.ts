@@ -30,7 +30,7 @@ export class MyApp {
       splashScreen.hide();
 
       //Source: http://tobiasahlin.com/spinkit/
-      timer (3000).subscribe(() => this.showSplash = false)
+      timer (300).subscribe(() => this.showSplash = false)
 
     });
     

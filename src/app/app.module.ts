@@ -11,6 +11,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { SettingsPage } from '../pages/settings/settings';
 import { IntroSlidesPage } from '../pages/introslides/introslides';
 import { SplashPage } from '../pages/splash/splash';
+import { GeolocationPage } from '../pages/geolocation/geolocation';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -18,6 +19,13 @@ import { CountriesProvider } from '../providers/countries/countries';
 
 import { IonicStorageModule } from '@ionic/storage';
 import { StorageServiceProvider } from '../providers/storage-service/storage-service';
+
+import { ChartsModule } from 'ng2-charts';
+
+import { Geolocation } from '@ionic-native/geolocation';
+import { GoogleMaps } from '@ionic-native/google-maps';
+
+
 
 @NgModule({
   declarations: [
@@ -28,6 +36,7 @@ import { StorageServiceProvider } from '../providers/storage-service/storage-ser
     TabsPage,
     SettingsPage,
     IntroSlidesPage,
+    GeolocationPage,
     SplashPage
   ],
   imports: [
@@ -37,6 +46,7 @@ import { StorageServiceProvider } from '../providers/storage-service/storage-ser
       name: '__VerbruiksManagerDB',
          driverOrder: ['indexeddb', 'sqlite', 'websql']
     }),
+    ChartsModule,
     HttpModule
   ],
   bootstrap: [IonicApp],
@@ -48,6 +58,7 @@ import { StorageServiceProvider } from '../providers/storage-service/storage-ser
     TabsPage,
     SettingsPage,
     IntroSlidesPage,
+    GeolocationPage,
     SplashPage
   ],
   providers: [
@@ -55,6 +66,8 @@ import { StorageServiceProvider } from '../providers/storage-service/storage-ser
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CountriesProvider,
+    Geolocation,
+    GoogleMaps,
     StorageServiceProvider
   ]
 })
