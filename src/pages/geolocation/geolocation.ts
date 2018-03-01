@@ -26,18 +26,16 @@ import {
 })
 export class GeolocationPage {
   
-  mapReady: boolean = false;
   map: GoogleMap;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private geolocation: Geolocation, private googleMaps: GoogleMaps, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, public googleMaps: GoogleMaps, public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
     this.loadMap();
    }
  
-   loadMap() {
-
+   loadMap(){
     let mapOptions: GoogleMapOptions = {
       camera: {
         target: {
@@ -48,15 +46,9 @@ export class GeolocationPage {
         tilt: 30
       }
     };
-
-    this.map = this.googleMaps.create('map_canvas', mapOptions);
-
-    // Wait the MAP_READY before using any methods.
+    this.map = GoogleMaps.create('map_canvas', mapOptions);    
     this.map.one(GoogleMapsEvent.MAP_READY)
       .then(() => {
-        console.log('Map is ready!');
-
-        // Now you can use all methods safely.
         this.map.addMarker({
             title: 'Ionic',
             icon: 'blue',
@@ -69,12 +61,13 @@ export class GeolocationPage {
           .then(marker => {
             marker.on(GoogleMapsEvent.MARKER_CLICK)
               .subscribe(() => {
-                alert('clicked');
+                  
               });
           });
 
       });
-  }
+    }
+
 
   //   // Create a map after the view is loaded.
   //   // (platform is already ready in app.component.ts)
