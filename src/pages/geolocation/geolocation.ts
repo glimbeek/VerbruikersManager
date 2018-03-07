@@ -4,21 +4,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Geolocation } from '@ionic-native/geolocation';
 
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent,
-  GoogleMapOptions,
-  CameraPosition,
-  MarkerOptions,
-  Marker
- } from '@ionic-native/google-maps';
-
-
-/**
- * Google Maps API Key: AIzaSyAr3SZit3mMmAcFbZ3bNKhNMX5DZ_yaeCU
- */
-
 @IonicPage()
 @Component({
   selector: 'page-geolocation',
@@ -26,104 +11,31 @@ import {
 })
 export class GeolocationPage {
   
-  map: GoogleMap;
+  // map: GoogleMap;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, public googleMaps: GoogleMaps, public toastCtrl: ToastController) {
+  title: string = 'My first AGM project';
+  errorMessage: string = "";
+  lat: number = 1.678418;
+  lng: number = 7.809007;
+
+  // constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, public googleMaps: GoogleMaps, public toastCtrl: ToastController) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, public toastCtrl: ToastController) {
+      this.geolocation.getCurrentPosition().then((resp) => {
+        this.lat = resp.coords.latitude
+        this.lng = resp.coords.longitude
+       }).catch((error) => {
+         this.errorMessage = 'Error getting location' + error + ' Please try again.';
+         console.log('Error getting location:', error);
+         this.showToast(this.errorMessage);
+       });
   }
 
   ionViewDidLoad() {
-    this.loadMap();
+    console.log('Loaded geolocation.ts');
    }
- 
-   loadMap(){
-    let mapOptions: GoogleMapOptions = {
-      camera: {
-        target: {
-          lat: 43.0741904,
-          lng: -89.3809802
-        },
-        zoom: 18,
-        tilt: 30
-      }
-    };
-    this.map = GoogleMaps.create('map_canvas', mapOptions);    
-    this.map.one(GoogleMapsEvent.MAP_READY)
-      .then(() => {
-        this.map.addMarker({
-            title: 'Ionic',
-            icon: 'blue',
-            animation: 'DROP',
-            position: {
-              lat: 43.0741904,
-              lng: -89.3809802
-            }
-          })
-          .then(marker => {
-            marker.on(GoogleMapsEvent.MARKER_CLICK)
-              .subscribe(() => {
-                  
-              });
-          });
 
-      });
-    }
-
-
-  //   // Create a map after the view is loaded.
-  //   // (platform is already ready in app.component.ts)
-  //   this.map = GoogleMaps.create('map_canvas', {
-  //     camera: {
-  //       target: {
-  //         lat: 43.0741704,
-  //         lng: -89.3809802
-  //       },
-  //       zoom: 18,
-  //       tilt: 30
-  //     }
-  //   });
-
-  //   // Wait the maps plugin is ready until the MAP_READY event
-  //   this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-  //     this.mapReady = true;
-  //   });
-  // }
-
-  // onButtonClick() {
-  //   if (!this.mapReady) {
-  //     this.showToast('map is not ready yet. Please try again.');
-  //     return;
-  //   }
-  //   this.map.clear();
-
-  //   // Get the location of you
-  //   this.map.getMyLocation()
-  //     .then((location: MyLocation) => {
-  //       console.log(JSON.stringify(location, null ,2));
-
-  //       // Move the map camera to the location with animation
-  //       return this.map.animateCamera({
-  //         target: location.latLng,
-  //         zoom: 17,
-  //         tilt: 30
-  //       }).then(() => {
-  //         // add a marker
-  //         return this.map.addMarker({
-  //           title: '@ionic-native/google-maps plugin!',
-  //           snippet: 'This plugin is awesome!',
-  //           position: location.latLng,
-  //           animation: GoogleMapsAnimation.BOUNCE
-  //         });
-  //       })
-  //     }).then((marker: Marker) => {
-  //       // show the infoWindow
-  //       marker.showInfoWindow();
-
-  //       // If clicked it, display the alert
-  //       marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-  //         this.showToast('clicked!');
-  //       });
-  //     });
-  // }
+ // google maps zoom level
+ zoom: number = 8;  
 
   showToast(message: string) {
     let toast = this.toastCtrl.create({
@@ -134,4 +46,4 @@ export class GeolocationPage {
 
     toast.present(toast);
   }
- }
+}

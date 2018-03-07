@@ -16,16 +16,15 @@ import { GeolocationPage } from '../pages/geolocation/geolocation';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CountriesProvider } from '../providers/countries/countries';
-
-import { IonicStorageModule } from '@ionic/storage';
 import { StorageServiceProvider } from '../providers/storage-service/storage-service';
 
+import { IonicStorageModule } from '@ionic/storage';
 import { ChartsModule } from 'ng2-charts';
-
 import { Geolocation } from '@ionic-native/geolocation';
-import { GoogleMaps } from '@ionic-native/google-maps';
+import { AgmCoreModule } from '@agm/core'; // https://angular-maps.com/
+// import { GoogleMaps } from '@ionic-native/google-maps';
 
-
+import { Shake } from '@ionic-native/shake';
 
 @NgModule({
   declarations: [
@@ -47,6 +46,10 @@ import { GoogleMaps } from '@ionic-native/google-maps';
          driverOrder: ['indexeddb', 'sqlite', 'websql']
     }),
     ChartsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAr3SZit3mMmAcFbZ3bNKhNMX5DZ_yaeCU' //Google Maps API Key
+    }),
+    Shake,
     HttpModule
   ],
   bootstrap: [IonicApp],
@@ -67,7 +70,7 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CountriesProvider,
     Geolocation,
-    GoogleMaps,
+    // GoogleMaps,
     StorageServiceProvider
   ]
 })

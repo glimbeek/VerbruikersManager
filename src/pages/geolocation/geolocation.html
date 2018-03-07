@@ -3,14 +3,12 @@
       <ion-title>
         Map
       </ion-title>
-      <ion-buttons end>
-        <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
-      </ion-buttons> 
     </ion-navbar>
   </ion-header>
    
 
   <ion-content>
-      <div id="map_canvas">
-        </div>
+    <agm-map [latitude]="lat" [longitude]="lng">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
     </ion-content>
