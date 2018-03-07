@@ -25,8 +25,6 @@ import { timer } from 'rxjs/observable/timer' ;
 import { Shake } from '@ionic-native/shake';
 import { ToastController } from 'ionic-angular';
 
-import {Platform} from 'ionic-angular';
-
 @Component({
   templateUrl: 'app.html'
 })
