@@ -49,7 +49,6 @@ import { Shake } from '@ionic-native/shake';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAr3SZit3mMmAcFbZ3bNKhNMX5DZ_yaeCU' //Google Maps API Key
     }),
-    Shake,
     HttpModule
   ],
   bootstrap: [IonicApp],
@@ -71,7 +70,8 @@ import { Shake } from '@ionic-native/shake';
     CountriesProvider,
     Geolocation,
     // GoogleMaps,
-    StorageServiceProvider
+    StorageServiceProvider,
+    Shake
   ]
 })
 export class AppModule {}

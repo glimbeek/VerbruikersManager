@@ -25,6 +25,8 @@ import { timer } from 'rxjs/observable/timer' ;
 import { Shake } from '@ionic-native/shake';
 import { ToastController } from 'ionic-angular';
 
+import {Platform} from 'ionic-angular';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -44,10 +46,15 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
 
-      const watch = this.shake.startWatch(60).subscribe(() => {
-        console.log('Shake it baby!');
-        this.showToast('Shake it baby!');
-        });
+      if (platform.is('cordova')) {
+        const watch = this.shake.startWatch(60).subscribe(() => {
+          console.log('Shake it baby!');
+          this.showToast('Shake it baby!');
+          });
+      }
+      else {
+        console.log('Not running on a native device');
+      }
 
       //Source: http://tobiasahlin.com/spinkit/
       timer (300).subscribe(() => this.showSplash = false)
