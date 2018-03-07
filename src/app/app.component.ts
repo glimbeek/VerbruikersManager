@@ -6,6 +6,10 @@
  * 
  */
 
+ /* Ionic Git Push command:
+  * $ git push ionic master
+  */
+
 import { Component } from '@angular/core';
 import { Platform, ModalController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -19,6 +23,7 @@ import { IntroSlidesPage } from '../pages/introslides/introslides';
 import { timer } from 'rxjs/observable/timer' ;
 
 import { Shake } from '@ionic-native/shake';
+import { ToastController } from 'ionic-angular';
 
 @Component({
   templateUrl: 'app.html'
@@ -29,7 +34,7 @@ export class MyApp {
 
   showSplash = true;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, modalCtrl: ModalController, private shake: Shake) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, modalCtrl: ModalController, private shake: Shake, public toastCtrl: ToastController) {
     platform.ready().then(() => {
 
       console.log("Platform is ready!")
@@ -40,7 +45,8 @@ export class MyApp {
       splashScreen.hide();
 
       const watch = this.shake.startWatch(60).subscribe(() => {
-        console.log('Shake it baby');
+        console.log('Shake it baby!');
+        this.showToast('Shake it baby!');
         });
 
       //Source: http://tobiasahlin.com/spinkit/
@@ -48,6 +54,16 @@ export class MyApp {
 
     });
     
+  }
+
+  showToast(message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 2000,
+      position: 'middle'
+    });
+
+    toast.present(toast);
   }
 
 }
