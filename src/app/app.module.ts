@@ -12,6 +12,8 @@ import { SettingsPage } from '../pages/settings/settings';
 import { IntroSlidesPage } from '../pages/introslides/introslides';
 import { SplashPage } from '../pages/splash/splash';
 import { GeolocationPage } from '../pages/geolocation/geolocation';
+import { MorePage } from '../pages/more/more';
+import { ChartPage } from '../pages/chart/chart';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -19,12 +21,15 @@ import { CountriesProvider } from '../providers/countries/countries';
 import { StorageServiceProvider } from '../providers/storage-service/storage-service';
 
 import { IonicStorageModule } from '@ionic/storage';
+
 import { ChartsModule } from 'ng2-charts';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AgmCoreModule } from '@agm/core'; // https://angular-maps.com/
-// import { GoogleMaps } from '@ionic-native/google-maps';
+
+import { AppRate } from '@ionic-native/app-rate';
 
 import { Shake } from '@ionic-native/shake';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 @NgModule({
   declarations: [
@@ -36,14 +41,16 @@ import { Shake } from '@ionic-native/shake';
     SettingsPage,
     IntroSlidesPage,
     GeolocationPage,
-    SplashPage
+    SplashPage,
+    MorePage,
+    ChartPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot({
-      name: '__VerbruiksManagerDB',
-         driverOrder: ['indexeddb', 'sqlite', 'websql']
+      name: 'glimbeek__dbVebruiksManager',
+         driverOrder: ['sqlite', 'indexeddb', 'websql']
     }),
     ChartsModule,
     AgmCoreModule.forRoot({
@@ -61,17 +68,21 @@ import { Shake } from '@ionic-native/shake';
     SettingsPage,
     IntroSlidesPage,
     GeolocationPage,
-    SplashPage
+    SplashPage,
+    MorePage,
+    ChartPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
     CountriesProvider,
     Geolocation,
-    // GoogleMaps,
+    Storage,
     StorageServiceProvider,
-    Shake
+    Shake,
+    AppRate,
+    ScreenOrientation,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}

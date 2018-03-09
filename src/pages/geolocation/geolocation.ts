@@ -15,8 +15,8 @@ export class GeolocationPage {
 
   title: string = 'My first AGM project';
   errorMessage: string = "";
-  lat: number = 1.678418;
-  lng: number = 7.809007;
+  lat: number = 52.370216;
+  lng: number = 4.895168;
 
   // constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, public googleMaps: GoogleMaps, public toastCtrl: ToastController) {
     constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, public toastCtrl: ToastController) {
@@ -35,7 +35,7 @@ export class GeolocationPage {
    }
 
  // google maps zoom level
- zoom: number = 8;  
+ zoom: number = 16;  
 
   showToast(message: string) {
     let toast = this.toastCtrl.create({

@@ -1,7 +1,11 @@
+import { Platform, ModalController } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { Storage } from '@ionic/storage';
+
+import { AlertController } from 'ionic-angular';
+import { AppRate } from '@ionic-native/app-rate';
 
 @Component({
   selector: 'page-home',
@@ -9,64 +13,63 @@ import { Storage } from '@ionic/storage';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public storage: Storage) {
+  /*
+   * To Do:
+   * Limit ratings prompt up to three times in a 365-day period https://developer.apple.com/app-store/ratings-and-reviews/
+   * Keep tracking of last prompt date
+   * Keep track of user prompt responce, on canceling we need to ask again after x amount of time.
+   */
+ 
+  x: number = 71;
+
+  constructor(public platform: Platform, public navCtrl: NavController, public storage: Storage, public alertCtrl: AlertController, public appRate: AppRate) {
   }
   
   ionViewDidLoad() {
+    this.storage.ready().then(() => { // Check if storage is ready
+      this.storage.get('TimesStarted').then((val) => { // If the key TimesStarted excists in storage, get it's value
+        if(val == this.x ) { // If the value is equal to x, show the rating pop-ups
+          if (this.platform.is('cordova')) { // Show the cordova/native pop-up
+            this.appRate.preferences.storeAppURL = {
+              ios: '< my_app_id >',
+              android: 'market://details?id=< package_name >',
+              windows: 'ms-windows-store://review/?ProductId=< Store_ID >'
+              };          
+              this.appRate.promptForRating(true); // Show the pop-up          
+          }
+          else { // For testing purposes we show a non-native browser compatible pop-up
+            let alert = this.alertCtrl.create({
+              title: 'How do you rate this app?',
+              message: '',
+              buttons: [
+                {
+                  text: 'Close',
+                  handler: () => {
+                    console.log('Close clicked');
+                  }
+                },
+                {
+                  text: 'Submit',
+                  handler: () => {
+                    console.log('Submit clicked');
+                  }
+                }
+              ]
+            });        
+            alert.present(); // Show the pop-up
+          } // End of ELSE
+        } // End of IF
+       }); // End of Storage READY
+    }); // End of Storage GET
+  } // End of ionViewDidLoad
 
-  }
-  
+  // We can remove this button eventually.
   clearCache() {
     this.storage.ready().then(() =>
       this.storage.remove('FirstStart')
     );
     console.log("Cleared FirstStart from storage.");
   }
-
-
-  public barChartOptions:any = {
-    scaleShowVerticalLines: false,
-    responsive: true
-  };
-  public barChartLabels:string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  public barChartType:string = 'bar';
-  public barChartLegend:boolean = true;
-  
-  public barChartData:any[] = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
-  ];
-  
-  // events
-  public chartClicked(e:any):void {
-    console.log(e);
-  }
-  
-  public chartHovered(e:any):void {
-    console.log(e);
-  }
-  
-  public randomize():void {
-    // Only Change 3 values
-    let data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      (Math.random() * 100),
-      56,
-      (Math.random() * 100),
-      40];
-    let clone = JSON.parse(JSON.stringify(this.barChartData));
-    clone[0].data = data;
-    this.barChartData = clone;
-    /**
-     * (My guess), for Angular to recognize the change in the dataset
-     * it has to change the dataset variable directly,
-     * so one way around it, is to clone the data, change it and then
-     * assign it;
-     */
-  }
-
   
 }
 

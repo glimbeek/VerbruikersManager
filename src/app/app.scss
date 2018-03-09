@@ -59,7 +59,6 @@
     font-weight: bolder; 
   }
 
-
   .spinner {
     // margin: 10% auto;
     width: 40px;
@@ -109,3 +108,50 @@
       -webkit-transform: rotate(-360deg);
     }
   }
+
+
+
+// Page Title/Toolbar top of page
+
+.toolbar-content-md {
+  text-align: center;
+}
+
+.toolbar-background {
+  background: #fff;
+  border-color: transparent;
+}
+
+.slide-zoom {
+  height: 100%;
+}
+
+.slide-title {
+  margin-top: 2.8rem;
+}
+
+.slide-image {
+  max-height: 50%;
+  max-width: 60%;
+  margin: 18px 0;
+}
+
+b {
+  font-weight: 500;
+}
+
+p {
+  padding: 0 40px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #60646B;
+
+  b {
+    color: #000000;
+  }
+}
+
+// Page Background color:
+.scroll-content {
+  background-color: map-get($colors, light);
+}

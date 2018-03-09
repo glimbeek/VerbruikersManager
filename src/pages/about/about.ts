@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { CountriesProvider } from '../../providers/countries/countries';
 
 @Component({
   selector: 'page-about',
@@ -8,21 +7,10 @@ import { CountriesProvider } from '../../providers/countries/countries';
 })
 export class AboutPage {
 
-  countriesList: any = []
-  loading: any;
-
-  date:any = new Date().toString();
-
-  constructor(public navCtrl: NavController, public countriesService: CountriesProvider) {
+  constructor(public navCtrl: NavController) {
   }
   
   ionViewDidLoad() {
-
-    this.countriesService.getCountries().subscribe((data) => {
-      this.countriesList = data;
-      console.log(this.countriesList);
-    });
-
   }
   
 }

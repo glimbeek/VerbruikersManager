@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../../pages/home/home';
 
 import { Storage } from '@ionic/storage';
+
 import { TabsPage } from '../tabs/tabs';
 
 @IonicPage()
@@ -21,7 +22,18 @@ export class IntroSlidesPage {
     }  
   
     openTabsPage() {
-    this.storage.set('FirstStart',true);
+
+      this.storage.ready().then(() => { // Check if the storage ready for accessing
+        this.storage.set('FirstStart',true);
+
+        this.storage.get('TimesStarted').then((val) => {
+          console.log('TimesStarted is', val);
+          val = val + 1;
+          console.log('TimesStarted', val);
+          this.storage.set('TimesStarted', val);
+        });
+    });
+
     this.navCtrl.setRoot(TabsPage);
     this.navCtrl.popToRoot();
   }

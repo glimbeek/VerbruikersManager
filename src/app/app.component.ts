@@ -23,6 +23,8 @@ import { IntroSlidesPage } from '../pages/introslides/introslides';
 import { timer } from 'rxjs/observable/timer' ;
 
 import { Shake } from '@ionic-native/shake';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
+
 import { ToastController } from 'ionic-angular';
 
 @Component({
@@ -34,7 +36,7 @@ export class MyApp {
 
   showSplash = true;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, modalCtrl: ModalController, private shake: Shake, public toastCtrl: ToastController) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, modalCtrl: ModalController, private shake: Shake, public toastCtrl: ToastController, private screenOrientation: ScreenOrientation) {
     platform.ready().then(() => {
 
       console.log("Platform is ready!")
@@ -45,7 +47,7 @@ export class MyApp {
       splashScreen.hide();
 
       if (platform.is('cordova')) {
-        const watch = this.shake.startWatch(60).subscribe(() => {
+        const watch = this.shake.startWatch(40).subscribe(() => {
           console.log('Shake it baby!');
           this.showToast('Shake it baby!');
           });
@@ -53,6 +55,12 @@ export class MyApp {
       else {
         console.log('Not running on a native device');
       }
+
+      this.screenOrientation.onChange().subscribe(
+        () => {
+          console.log(this.screenOrientation.type);
+        }
+     );
 
       //Source: http://tobiasahlin.com/spinkit/
       timer (300).subscribe(() => this.showSplash = false)
