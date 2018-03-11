@@ -1,10 +1,21 @@
 <ion-header>
-
-  <ion-navbar>
-    <ion-title></ion-title>
-  </ion-navbar>
-
-</ion-header>
+    <ion-toolbar>
+      <ion-segment [(ngModel)]="interval">
+        <ion-segment-button value="day" checked>
+          Day
+        </ion-segment-button>
+        <ion-segment-button value="month">
+          Month
+        </ion-segment-button>
+        <ion-segment-button value="year">
+            Year
+        </ion-segment-button>
+        <ion-segment-button value="overall">
+            Overall 
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+  </ion-header>
 
 
 <ion-content padding>

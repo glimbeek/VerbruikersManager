@@ -10,37 +10,43 @@
 <ion-content padding>
     <ion-list >
       <ion-item>
-        <button ion-button full icon-left color="lighter">
+        <button ion-button (click)="openSettingsPage()" full icon-left color="lighter">
           <ion-icon name="settings"></ion-icon>
-          settings          
+          Settings          
         </button>
         <ion-icon name="arrow-forward" item-end></ion-icon>
       </ion-item>
     </ion-list>  
     <ion-list >
       <ion-list-header>
-        Need help?
+        Leave us some feedback!
       </ion-list-header>
-      <ion-item>
+      <!-- <ion-item>
       <button ion-button full icon-left color="lighter">
           <ion-icon name="information-circle"></ion-icon>
-          app support
+          App support
       </button>
       <ion-icon name="arrow-forward" item-end></ion-icon>
-    </ion-item>
+    </ion-item> -->
     <ion-item>
       <button ion-button full icon-left color="lighter">
           <ion-icon name="star"></ion-icon>
-          rate app
+          Rate app
+      </button>
+      <ion-icon name="arrow-forward" item-end></ion-icon>
+    </ion-item>
+    <ion-item>
+      <button ion-button (click)="openSendEmail()" full icon-left color="lighter">
+          <ion-icon name="create"></ion-icon>
+         Feedback
       </button>
       <ion-icon name="arrow-forward" item-end></ion-icon>
     </ion-item>
     <ion-item>
       <button ion-button full icon-left color="lighter">
-          <ion-icon name="create"></ion-icon>
-          feedback
+          <ion-icon name="information-circle"></ion-icon>
+          Version: {{appInfo}}
       </button>
-      <ion-icon name="arrow-forward" item-end></ion-icon>
-      </ion-item>    
+    </ion-item>    
   </ion-list>
 </ion-content>

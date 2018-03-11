@@ -1,38 +1,50 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
-import { CountriesProvider } from '../../providers/countries/countries';
+import { Storage } from '@ionic/storage';
 
+import { AlertController } from 'ionic-angular';
 
-@IonicPage()
 @Component({
-  selector: 'page-chart',
-  templateUrl: 'chart.html',
+  selector: 'page-home',
+  templateUrl: 'home.html'
 })
-export class ChartPage {
+export class HomePage {
 
-  countriesList: any = []
-  loading: any;
-
-  date:any = new Date().toString();
-
-  interval:string;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public countriesService: CountriesProvider) {
-    this.interval = "day"
+  constructor(public navCtrl: NavController, public storage: Storage, public alertCtrl: AlertController) {
   }
-
+  
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ChartPage');
-
-    this.countriesService.getCountries().subscribe((data) => {
-      this.countriesList = data;
-      console.log(this.countriesList);
+    let alert = this.alertCtrl.create({
+      title: 'How do you rate this app?',
+      message: '',
+      buttons: [
+        {
+          text: 'Close',
+          handler: () => {
+            console.log('Close clicked');
+          }
+        },
+        {
+          text: 'Submit',
+          handler: () => {
+            console.log('Submit clicked');
+          }
+        }
+      ]
     });
 
+    alert.present();
   }
 
-  // Chart Wizadry going in here:
+  clearCache() {
+    this.storage.ready().then(() =>
+      this.storage.remove('FirstStart')
+    );
+    console.log("Cleared FirstStart from storage.");
+  }
+
+
   public barChartOptions:any = {
     scaleShowVerticalLines: false,
     responsive: true
@@ -40,21 +52,21 @@ export class ChartPage {
   public barChartLabels:string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
   public barChartType:string = 'bar';
   public barChartLegend:boolean = true;
-
+  
   public barChartData:any[] = [
     {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
     {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
   ];
-
+  
   // events
   public chartClicked(e:any):void {
     console.log(e);
   }
-
+  
   public chartHovered(e:any):void {
     console.log(e);
   }
-
+  
   public randomize():void {
     // Only Change 3 values
     let data = [
@@ -76,4 +88,6 @@ export class ChartPage {
      */
   }
 
+  
 }
+

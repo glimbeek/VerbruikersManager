@@ -31,6 +31,10 @@ import { AppRate } from '@ionic-native/app-rate';
 import { Shake } from '@ionic-native/shake';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
+import { EmailComposer } from '@ionic-native/email-composer';
+import { AppVersion } from '@ionic-native/app-version';
+import { Device } from '@ionic-native/device';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -82,6 +86,9 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
     Shake,
     AppRate,
     ScreenOrientation,
+    EmailComposer,
+    AppVersion,
+    Device,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

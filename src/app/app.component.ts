@@ -3,7 +3,7 @@
  * Proper local storage provider
  * 
  * Shake phone for feedback. 
- * 
+ * email bug/feedback report with device details in email title and app version
  */
 
  /* Ionic Git Push command:
