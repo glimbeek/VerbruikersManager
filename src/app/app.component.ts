@@ -48,21 +48,21 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
 
-      if (platform.is('cordova')) {
-        const watch = this.shake.startWatch(40).subscribe(() => {
-          console.log('Shake it baby!');
-          this.showToast('Shake it baby!');
-          });
-      }
-      else {
-        console.log('Not running on a native device');
-      }
+    //   if (platform.is('cordova')) {
+    //     const watch = this.shake.startWatch(40).subscribe(() => {
+    //       console.log('Shake it baby!');
+    //       this.showToast('Shake it baby!');
+    //       });
+    //   }
+    //   else {
+    //     console.log('Not running on a native device');
+    //   }
 
-      this.screenOrientation.onChange().subscribe(
-        () => {
-          console.log(this.screenOrientation.type);
-        }
-     );
+    //   this.screenOrientation.onChange().subscribe(
+    //     () => {
+    //       console.log(this.screenOrientation.type);
+    //     }
+    //  );
 
       //Source: http://tobiasahlin.com/spinkit/
       timer (300).subscribe(() => this.showSplash = false)

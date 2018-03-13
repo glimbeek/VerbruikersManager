@@ -7,46 +7,30 @@
 </ion-header>
 
 
-<ion-content padding>
-    <ion-list >
-      <ion-item>
-        <button ion-button (click)="openSettingsPage()" full icon-left color="lighter">
-          <ion-icon name="settings"></ion-icon>
-          Settings          
-        </button>
-        <ion-icon name="arrow-forward" item-end></ion-icon>
-      </ion-item>
-    </ion-list>  
-    <ion-list >
-      <ion-list-header>
-        Leave us some feedback!
-      </ion-list-header>
-      <!-- <ion-item>
-      <button ion-button full icon-left color="lighter">
-          <ion-icon name="information-circle"></ion-icon>
-          App support
-      </button>
+<ion-content>
+  <ion-list >
+    <ion-item (click)="openSettingsPage()">
+        <ion-icon name="settings" item-start></ion-icon>
+        Settings          
       <ion-icon name="arrow-forward" item-end></ion-icon>
-    </ion-item> -->
+    </ion-item>
+  </ion-list>
+  <ion-list>
     <ion-item>
-      <button ion-button full icon-left color="lighter">
-          <ion-icon name="star"></ion-icon>
-          Rate app
-      </button>
+      <ion-icon name="star" item-start></ion-icon>
+      Rate app
+      <ion-icon name="arrow-forward" item-end></ion-icon>
+    </ion-item>
+    <ion-item (click)="openSendEmail()">
+      <ion-icon name="create" item-start></ion-icon>
+      Feedback
       <ion-icon name="arrow-forward" item-end></ion-icon>
     </ion-item>
     <ion-item>
-      <button ion-button (click)="openSendEmail()" full icon-left color="lighter">
-          <ion-icon name="create"></ion-icon>
-         Feedback
-      </button>
-      <ion-icon name="arrow-forward" item-end></ion-icon>
-    </ion-item>
-    <ion-item>
-      <button ion-button full icon-left color="lighter">
-          <ion-icon name="information-circle"></ion-icon>
-          Version: {{appInfo}}
-      </button>
+      <ion-icon name="information-circle" item-start></ion-icon>
+      <ion-note>
+        {{appName}}, Version: {{appVersionNumber}}
+      </ion-note>
     </ion-item>    
   </ion-list>
 </ion-content>
