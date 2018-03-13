@@ -35,6 +35,8 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { AppVersion } from '@ionic-native/app-version';
 import { Device } from '@ionic-native/device';
 
+import { Push } from '@ionic-native/push';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -89,6 +91,7 @@ import { Device } from '@ionic-native/device';
     EmailComposer,
     AppVersion,
     Device,
+    Push,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

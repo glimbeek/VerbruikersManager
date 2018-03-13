@@ -22,7 +22,6 @@ export class IntroSlidesPage {
     }  
   
     openTabsPage() {
-
       this.storage.ready().then(() => { // Check if the storage ready for accessing
         this.storage.set('FirstStart',true);
 
