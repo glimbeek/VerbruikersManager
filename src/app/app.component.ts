@@ -27,7 +27,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 import { ToastController } from 'ionic-angular';
 
-import { Push, PushObject, PushOptions } from '@ionic-native/push';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 @Component({
   templateUrl: 'app.html'
@@ -38,7 +38,8 @@ export class MyApp {
 
   showSplash = true;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, modalCtrl: ModalController, private shake: Shake, public toastCtrl: ToastController, private screenOrientation: ScreenOrientation, public push: Push) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, modalCtrl: ModalController,
+              private shake: Shake, public toastCtrl: ToastController, private screenOrientation: ScreenOrientation, private localNotifications: LocalNotifications) {
     platform.ready().then(() => {
 
       console.log("Platform is ready!")
@@ -48,21 +49,6 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
 
-    //   if (platform.is('cordova')) {
-    //     const watch = this.shake.startWatch(40).subscribe(() => {
-    //       console.log('Shake it baby!');
-    //       this.showToast('Shake it baby!');
-    //       });
-    //   }
-    //   else {
-    //     console.log('Not running on a native device');
-    //   }
-
-    //   this.screenOrientation.onChange().subscribe(
-    //     () => {
-    //       console.log(this.screenOrientation.type);
-    //     }
-    //  );
 
       //Source: http://tobiasahlin.com/spinkit/
       timer (300).subscribe(() => this.showSplash = false)
@@ -73,34 +59,16 @@ export class MyApp {
     
   }
 
-  pushNotifications () {
-    console.log('We want to push something here...');
-
-
-    // this.push.hasPermission().then((res: any) => {
-    //   if (res.isEnabled) {
-    //     console.log('We have permission to send push notifications');
-    //   } else {
-    //     console.log('We do not have permission to send push notifications');
-    //   }
-    // });
-
-    // // Return a list of currently configured channels
-    // this.push.listChannels().then((channels) => console.log('List of channels', channels))
-
-    // // Create a channel (Android O and above). You'll need to provide the id, description and importance properties.
-    // this.push.createChannel({
-    // id: "testchannel1",
-    // description: "My first test channel",
-    // // The importance property goes from 1 = Lowest, 2 = Low, 3 = Normal, 4 = High and 5 = Highest.
-    // importance: 3
-    // }).then(() => console.log('Channel created'));
-
-
-    
-
+  pushNotifications() {
+    console.log('Notify me!')
+    this.localNotifications.schedule(
+      {
+        text: 'Your weekly overview is available.'
+      }
+    )
   }
 
+ 
   showToast(message: string) {
     let toast = this.toastCtrl.create({
       message: message,

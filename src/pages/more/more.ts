@@ -96,7 +96,7 @@ export class MorePage {
       });
 
       let email = {
-        to: 'appVebruikrsmanager@gvanlimbeek.nl',
+        to: 'appVerbruikrsmanager@gvanlimbeek.nl',
         // cc: '',
         // bcc: ['', ''],
         // attachments: [

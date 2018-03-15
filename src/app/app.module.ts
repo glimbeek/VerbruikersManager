@@ -35,7 +35,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { AppVersion } from '@ionic-native/app-version';
 import { Device } from '@ionic-native/device';
 
-import { Push } from '@ionic-native/push';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 @NgModule({
   declarations: [
@@ -55,7 +55,7 @@ import { Push } from '@ionic-native/push';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot({
-      name: 'glimbeek__dbVebruiksManager',
+      name: 'glimbeek__dbVerbruiksManager',
          driverOrder: ['sqlite', 'indexeddb', 'websql']
     }),
     ChartsModule,
@@ -91,7 +91,7 @@ import { Push } from '@ionic-native/push';
     EmailComposer,
     AppVersion,
     Device,
-    Push,
+    LocalNotifications,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
