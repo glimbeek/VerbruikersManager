@@ -1,7 +1,9 @@
 <ion-header>
+
     <ion-toolbar>
-      <ion-segment [(ngModel)]="interval">
-        <ion-segment-button value="day" checked>
+
+      <ion-segment [(ngModel)]="interval" (ionChange)="onSegmentChange()">
+        <ion-segment-button value="day" checked >
           Day
         </ion-segment-button>
         <ion-segment-button value="month">
@@ -14,11 +16,23 @@
             Overall 
         </ion-segment-button>
       </ion-segment>
+
     </ion-toolbar>
+
   </ion-header>
 
 
+
 <ion-content padding>
+
+
+    <ion-list>
+        <ion-item *ngFor="let d of data">
+          {{ d }}
+        </ion-item>
+      </ion-list>
+<!-- 
+    <ion-list #scheduleList [hidden]="shownSessions === 0">
     <div>
         <div style="display: block">
           <canvas baseChart
@@ -32,4 +46,5 @@
         </div>
         <button (click)="randomize()">Update</button>
       </div>
+    </ion-list> -->
 </ion-content>

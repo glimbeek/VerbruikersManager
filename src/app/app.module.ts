@@ -14,6 +14,8 @@ import { SplashPage } from '../pages/splash/splash';
 import { GeolocationPage } from '../pages/geolocation/geolocation';
 import { MorePage } from '../pages/more/more';
 import { ChartPage } from '../pages/chart/chart';
+import { DayPage } from '../pages/day/day';
+import { MonthPage } from '../pages/month/month';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -39,6 +41,10 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 
 
 /*
+ * Good place to steal some code:
+ * https://github.com/ionic-team/ionic-conference-app
+ * https://demo.mobiscroll.com
+ * 
  * Common Cordova / Ionic build errors
  * https://docs.buddybuild.com/troubleshooting/frameworks/cordova_ionic.html
  * 
@@ -64,6 +70,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
  * 
  * Upload changes to GIT, IONIC builds a new version viewable in IONIC VIEW:
  * $ git push -u origin master
+ * 
  */
 
 @NgModule({
@@ -78,7 +85,9 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     GeolocationPage,
     SplashPage,
     MorePage,
-    ChartPage
+    ChartPage,
+    DayPage,
+    MonthPage
   ],
   imports: [
     BrowserModule,
@@ -105,7 +114,9 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     GeolocationPage,
     SplashPage,
     MorePage,
-    ChartPage
+    ChartPage,
+    DayPage,
+    MonthPage
   ],
   providers: [
     StatusBar,

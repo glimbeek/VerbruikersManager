@@ -1,15 +1,3 @@
-/* ToDo:
- * Chart drawing
- * Proper local storage provider
- * 
- * Shake phone for feedback. 
- * email bug/feedback report with device details in email title and app version
- */
-
- /* Ionic Git Push command:
-  * $ git push ionic master
-  */
-
 import { Component } from '@angular/core';
 import { Platform, ModalController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -40,6 +28,7 @@ export class MyApp {
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, modalCtrl: ModalController,
               private shake: Shake, public toastCtrl: ToastController, private screenOrientation: ScreenOrientation, private localNotifications: LocalNotifications) {
+
     platform.ready().then(() => {
 
       console.log("Platform is ready!")

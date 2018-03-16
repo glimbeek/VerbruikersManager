@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Segment } from 'ionic-angular';
 
-import { CountriesProvider } from '../../providers/countries/countries';
-
+import { DayPage } from '../day/day';
+import { MonthPage } from '../month/month';
+import { Page } from 'ionic-angular/navigation/nav-util';
 
 @IonicPage()
 @Component({
@@ -14,23 +15,49 @@ export class ChartPage {
   countriesList: any = []
   loading: any;
 
+  userData: any;
+  segment: any;
+  data: any;
+
   date:any = new Date().toString();
 
   interval:string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public countriesService: CountriesProvider) {
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.interval = "day"
+    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChartPage');
 
-    this.countriesService.getCountries().subscribe((data) => {
-      this.countriesList = data;
-      console.log(this.countriesList);
+    // this.onSegmentChange();
+  }
+  // rootPage: Page;
+
+  onSegmentChange() {
+    console.log('Segment changed!')
+
+    this.onSegmentChange(this.segment).then((data) => {
+      this.data = data;
     });
 
-  }
+
+  //   let segval = seg.value; 
+  //   if (segval === 'day') {
+  //    this.rootPage = DayPage;
+  //    console.log('segval:' + segval)
+  //  } else if (segval === 'month') {
+  //    this.rootPage = MonthPage;
+  //    console.log('segval:' + segval)
+  //    this.navCtrl.(this.rootPage);  
+  //  }
+   
+   
+ }
+
+  
 
   // Chart Wizadry going in here:
   public barChartOptions:any = {

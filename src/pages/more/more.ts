@@ -88,7 +88,6 @@ export class MorePage {
       console.log('Sending feedback');
 
 
-
       this.emailComposer.isAvailable().then((available: boolean) =>{
         if(available) {
           //Now we know we can send
@@ -96,7 +95,7 @@ export class MorePage {
       });
 
       let email = {
-        to: 'appVerbruikrsmanager@gvanlimbeek.nl',
+        to: 'appVerbruiksmanager@gvanlimbeek.nl',
         // cc: '',
         // bcc: ['', ''],
         // attachments: [
