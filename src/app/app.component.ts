@@ -56,8 +56,17 @@ export class MyApp {
     });
 
     this.pushNotifications();
+
+    //this.shakeMe();
     
   }
+
+  shakeMe() {
+    const watch = this.shake.startWatch(60).subscribe(() => {
+      this.showToast('Shake it baby!')
+      console.log('Shake it baby!')
+      });
+    }
 
   pushNotifications() {
     console.log('Notify me!')

@@ -37,6 +37,35 @@ import { Device } from '@ionic-native/device';
 
 import { LocalNotifications } from '@ionic-native/local-notifications';
 
+
+/*
+ * Common Cordova / Ionic build errors
+ * https://docs.buddybuild.com/troubleshooting/frameworks/cordova_ionic.html
+ * 
+ * Known problem: --livereload not working cordova.js doesn't get loaded: 
+ *  - https://github.com/ionic-team/ionic-app-scripts/issues/467
+ *  - https://github.com/ionic-team/ionic-app-scripts/issues/1380 
+ * 
+ * 
+ * Unable to uninstall a plugin because of something related to android or ios?
+ * - Uninstall the platform: $ ionic cordova platform rm <platform>
+ * - Uninstall the plugin
+ * - Install the platform
+ * 
+ * WARNING: (node:8812) UnhandledPromiseRejectionWarning: Unhandled promise rejection (rejection id: 1): CordovaError: Cannot find plugin.xml for plugin "cordova-plugin-ionic". Please try adding it again.
+ * - npm uninstall -g ionic cordova
+ * - npm install -g ionic cordova
+ * 
+ * In general after doing INSTALLs or UNISTALLs to the PLATFORM, PLUGINS, etc.. 
+ * - ionic cordova prepare
+ * - .\platforms\android\cordova\clean
+ * - npm rebuild node-sass
+ * 
+ * 
+ * Upload changes to GIT, IONIC builds a new version viewable in IONIC VIEW:
+ * $ git push -u origin master
+ */
+
 @NgModule({
   declarations: [
     MyApp,
