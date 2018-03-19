@@ -4,24 +4,60 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-card class="left">
 
-  <p>Date:
-    {{ date | date : format : timezone}} <!-- https://docs.angularjs.org/api/ng/filter/date -->
-  </p>
- 
-  <p>
-    <button ion-button (click)="clearCache()">Clear FirstStart</button>
-  </p>  
+    <ion-item>
+      <ion-icon name='flash' item-start style="color: #55acee"></ion-icon>
+        <div class="title">Electricity used</div>
+        <div class="wrapper">
+        <div class="value">{{powerUsed}}</div>
+        <div class="energyUnit">kWh</div>
+      </div>
+    </ion-item>
+
+  </ion-card>
+
+  <ion-card class="right">
+
+    <ion-item>
+      <ion-icon name='flame' item-start style="color: #55acee"></ion-icon>
+        <div class="title">Gas used</div>
+        <div class="value">{{gasUsed}}</div>
+        <div class="energyUnit">m³</div>
+    </ion-item>
+
+  </ion-card>
+
+  <ion-card class="full">
+
+    <img src="https://ionicframework.com/dist/preview-app/www/assets/img/bjork-live.jpg"/>
+
+    <ion-card-content>
+      <ion-card-title>
+        Slimme Meter
+      </ion-card-title>
+      <p>
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+      </p>
+      <p>Date:
+        {{ date | date : format : timezone}} <!-- https://docs.angularjs.org/api/ng/filter/date -->
+      </p>
+     
+      <p>
+        <button ion-button (click)="clearCache()">Clear FirstStart</button>
+      </p>  
+    </ion-card-content>
+
+    <ion-item>
+      <ion-icon name='flash' item-start style="color: green"></ion-icon>
+      <div class="title">Electricity produced</div>
+      <div class="value">{{powerProduced}}</div>
+      <div class="energyUnit">kWh</div>
+    </ion-item>
+
+  </ion-card>
+
 
 </ion-content>

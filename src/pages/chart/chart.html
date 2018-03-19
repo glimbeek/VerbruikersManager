@@ -2,18 +2,18 @@
 
     <ion-toolbar>
 
-      <ion-segment [(ngModel)]="interval" (ionChange)="onSegmentChange()">
-        <ion-segment-button value="day" checked >
+      <ion-segment [(ngModel)]="interval">
+        <ion-segment-button value="day" (click)="loadData('day')">
           Day
         </ion-segment-button>
-        <ion-segment-button value="month">
+        <ion-segment-button value="month" (click)="loadData('month')">
           Month
         </ion-segment-button>
-        <ion-segment-button value="year">
-            Year
+        <ion-segment-button value="year" (click)="loadData('year')">
+           Year
         </ion-segment-button>
-        <ion-segment-button value="overall">
-            Overall 
+        <ion-segment-button value="overall" (click)="loadData('overall')">
+          Overall
         </ion-segment-button>
       </ion-segment>
 
@@ -26,11 +26,42 @@
 <ion-content padding>
 
 
-    <ion-list>
-        <ion-item *ngFor="let d of data">
-          {{ d }}
-        </ion-item>
-      </ion-list>
+  <div [ngSwitch]="interval">
+    <ion-list *ngSwitchCase="'day'">
+      Daily data overview: {{dataDay}}
+    </ion-list>
+    <ion-list *ngSwitchCase="'month'">
+      Monthly data overview: {{datamonth}}
+      <ion-item *ngFor="let user of users">
+        <h2>{{user.name}}</h2>
+        <p>{{user.email}}</p>
+      </ion-item>
+    </ion-list>
+    <ion-list *ngSwitchCase="'year'">
+      Yearly data overview: {{dataYearly}}
+      <ion-item *ngFor="let c of countries">
+        <ion-avatar item-left>
+          <img src="{{c.flag}}">
+        </ion-avatar>
+        <h2>{{c.name}}</h2>
+        <p>Capital: {{c.capital}}, Region: {{c.region}}</p>
+      </ion-item>
+    </ion-list>
+    <ion-list *ngSwitchCase="'overall'">
+      Overall data: {{dataOverall}}
+      <!-- <div style="display: block">
+        <base-chart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></base-chart>
+      </div>
+      <button (click)="randomize()">Update</button> -->
+    </ion-list>
+</div>   
 <!-- 
     <ion-list #scheduleList [hidden]="shownSessions === 0">
     <div>

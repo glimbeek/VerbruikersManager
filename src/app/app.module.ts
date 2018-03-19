@@ -1,19 +1,21 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
-import { SettingsPage } from '../pages/settings/settings';
-import { IntroSlidesPage } from '../pages/introslides/introslides';
 import { SplashPage } from '../pages/splash/splash';
+import { IntroSlidesPage } from '../pages/introslides/introslides';
+import { HomePage } from '../pages/home/home';
+import { ChartPage } from '../pages/chart/chart';
 import { GeolocationPage } from '../pages/geolocation/geolocation';
 import { MorePage } from '../pages/more/more';
-import { ChartPage } from '../pages/chart/chart';
+import { SettingsPage } from '../pages/settings/settings';
+import { AboutPage } from '../pages/about/about';
+import { ContactPage } from '../pages/contact/contact';
+import { TabsPage } from '../pages/tabs/tabs';
+
 import { DayPage } from '../pages/day/day';
 import { MonthPage } from '../pages/month/month';
 
@@ -38,6 +40,7 @@ import { AppVersion } from '@ionic-native/app-version';
 import { Device } from '@ionic-native/device';
 
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { RestProvider } from '../providers/rest/rest';
 
 
 /*
@@ -100,7 +103,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAr3SZit3mMmAcFbZ3bNKhNMX5DZ_yaeCU' //Google Maps API Key
     }),
-    HttpModule
+    HttpModule,
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -132,7 +136,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     AppVersion,
     Device,
     LocalNotifications,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    RestProvider
   ]
 })
 export class AppModule {}

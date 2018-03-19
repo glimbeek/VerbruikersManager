@@ -16,11 +16,15 @@ export class HomePage {
   /*
    * To Do:
    * Limit ratings prompt up to three times in a 365-day period https://developer.apple.com/app-store/ratings-and-reviews/
-   * Keep tracking of last prompt date
+   * Keep track of last prompt date
    * Keep track of user prompt responce, on canceling we need to ask again after x amount of time.
    */
  
   x: number = 71;
+
+  powerProduced: any = "5.9";
+  powerUsed: any = "39.1";
+  gasUsed: any = "7.3";
 
   constructor(public platform: Platform, public navCtrl: NavController, public storage: Storage, public alertCtrl: AlertController, public appRate: AppRate) {
   }

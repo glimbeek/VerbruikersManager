@@ -1,15 +1,39 @@
 page-home {
-
-}
-
-.ios, .md {
- 
-    page-home {
- 
-        ion-card-header {
-            font-weight: bold;
-        }
- 
+    .wrapper {
+        // min-height: 40px;       
     }
- 
+    ion-card.left.card.card-ios > ion-item > ion-icon {
+        margin-right: 8px !important;
+    }
+    ion-card.right.card.card-ios > ion-item > ion-icon {
+        margin-right: 8px !important;
+    }
+    .left {
+        width: calc(50% - 18px) !important;
+        float: left;
+        margin-right: 0px
+    }
+    .right {
+        width: calc(50% - 18px) !important;
+        float: right;
+        margin-top: 12px;
+        margin-left: 0px;
+    }
+    .title {
+        color: black;
+        font-size: 70%;
+    }
+    .value {
+        color: lightgreen;
+        font-size: 200%;
+        float: left;
+        width: auto;
+        text-align: center;
+    }
+    .energyUnit {
+        color: black;
+        font-size: 70%; 
+        margin-right: 8px;
+        display: inline-block;vertical-align: bottom;
+    }
 }

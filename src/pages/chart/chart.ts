@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Segment } from 'ionic-angular';
+import { LoadingController, IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { DayPage } from '../day/day';
-import { MonthPage } from '../month/month';
-import { Page } from 'ionic-angular/navigation/nav-util';
+
+import { RestProvider } from '../../providers/rest/rest';
+import { CountriesProvider } from '../../providers/countries/countries'
 
 @IonicPage()
 @Component({
@@ -12,95 +12,88 @@ import { Page } from 'ionic-angular/navigation/nav-util';
 })
 export class ChartPage {
 
-  countriesList: any = []
-  loading: any;
+  users: any;
+  countries: string[];
+  errorMessage: string;
 
-  userData: any;
-  segment: any;
-  data: any;
+  dataDay: any = "This is some  daily data";
+  datamonth: any = "This is some monthly data";
+  dataYearly: any = "This is some yearly data";
+  dataOverall: any; "This is all the data so far";
 
   date:any = new Date().toString();
 
   interval:string;
 
+  loading: any;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider, public countriesProvider: CountriesProvider, public loadingCtrl: LoadingController) {
     this.interval = "day"
-    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChartPage');
-
-    // this.onSegmentChange();
   }
-  // rootPage: Page;
 
-  onSegmentChange() {
-    console.log('Segment changed!')
-
-    this.onSegmentChange(this.segment).then((data) => {
-      this.data = data;
+  showLoading() {
+    console.log('Loading data...')
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
     });
-
-
-  //   let segval = seg.value; 
-  //   if (segval === 'day') {
-  //    this.rootPage = DayPage;
-  //    console.log('segval:' + segval)
-  //  } else if (segval === 'month') {
-  //    this.rootPage = MonthPage;
-  //    console.log('segval:' + segval)
-  //    this.navCtrl.(this.rootPage);  
-  //  }
-   
-   
- }
-
   
+    this.loading.present();
 
-  // Chart Wizadry going in here:
-  public barChartOptions:any = {
-    scaleShowVerticalLines: false,
-    responsive: true
-  };
-  public barChartLabels:string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  public barChartType:string = 'bar';
-  public barChartLegend:boolean = true;
-
-  public barChartData:any[] = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
-  ];
-
-  // events
-  public chartClicked(e:any):void {
-    console.log(e);
   }
 
-  public chartHovered(e:any):void {
-    console.log(e);
+  hideLoading(){
+    this.loading.dismiss();
   }
 
-  public randomize():void {
-    // Only Change 3 values
-    let data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      (Math.random() * 100),
-      56,
-      (Math.random() * 100),
-      40];
-    let clone = JSON.parse(JSON.stringify(this.barChartData));
-    clone[0].data = data;
-    this.barChartData = clone;
-    /**
-     * (My guess), for Angular to recognize the change in the dataset
-     * it has to change the dataset variable directly,
-     * so one way around it, is to clone the data, change it and then
-     * assign it;
-     */
+  loadData(value) {
+    console.log('Segment clicked: ' + value)
+    switch(value) {
+      case "day": 
+      this.showLoading()
+      this.dataDay = "day BLALALA"
+      this.hideLoading();
+    }
+    switch(value) {
+      case "month":
+      this.showLoading()
+      this.dataDay = "month BLALALA"
+      this.getUsers();      
+    }
+    switch(value) {
+      case "year": 
+      this.showLoading()
+      this.dataDay = "year BLALALA"
+      this.getCountries(); 
+    }   
+    switch(value) {
+      case "overall": 
+      this.showLoading()
+      this.dataDay = "overall BLALALA"
+      this.hideLoading();
+    }    
+    
+  }
+
+  getUsers() {
+    this.restProvider.getUsers()
+    .then(data => {
+      this.users = data;
+      console.log(this.users);
+    });
+    this.hideLoading();
+  }
+
+  getCountries() {
+    this.countriesProvider.getCountries()
+       .subscribe(
+         countries => this.countries = countries,
+         error =>  this.errorMessage = <any>error);
+         console.log(this.countries)
+      this.hideLoading();
   }
 
 }
