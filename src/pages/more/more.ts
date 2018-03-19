@@ -61,10 +61,12 @@ export class MorePage {
       //this.appInfo = "appName: " + this.appName + ", appPackageName: " + this.appPackageName + ", appVersionCode: " +  this.appVersionCode + ", appVersionNumber: " + this.appVersionNumber
       this.deviceInfo = "deviceManufacturer: " + this.deviceManufacturer + ", deviceModel: " + this.deviceModel + ", devicePlatform: " + this.devicePlatform + ", deviceSerial: " + this.deviceSerial + ", deviceUuid: " + this.deviceUuid + ", deviceVersion: " + this.deviceVersion
 
-      this.appVersion.getVersionNumber().then((result) => {
-        this.appVersionNumber = result;
-      });
-      console.log('Version:' + this.appVersionNumber);
+      // this.appVersion.getVersionNumber().then((result) => {
+      //   this.appVersionNumber = result;
+      // });
+      // console.log('Version:' + this.appVersionNumber);
+
+      this.appVersionNumber = this.appVersion.getVersionNumber();
 
       this.appVersion.getAppName().then((result) => {
         this.appName = result;

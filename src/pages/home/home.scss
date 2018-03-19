@@ -1,13 +1,23 @@
 page-home {
+    .scroll -content {
+        background-color: #f4f4f0 !important;
+    }
     .wrapper {
-        // min-height: 40px;       
+        // min-height: 40px;  
+        display: flex;
+        align-items: flex-start;     
     }
-    ion-card.left.card.card-ios > ion-item > ion-icon {
+    ion-card.left.card > ion-item > ion-icon {
         margin-right: 8px !important;
     }
-    ion-card.right.card.card-ios > ion-item > ion-icon {
+    ion-card.right.card > ion-item > ion-icon {
         margin-right: 8px !important;
     }
+
+    ion-card.left.card.card-md > ion-item > div.item-inner {
+        margin-left: 12px;
+    }
+
     .left {
         width: calc(50% - 18px) !important;
         float: left;
@@ -16,7 +26,7 @@ page-home {
     .right {
         width: calc(50% - 18px) !important;
         float: right;
-        margin-top: 12px;
+        margin-top: 10px;
         margin-left: 0px;
     }
     .title {
@@ -33,7 +43,87 @@ page-home {
     .energyUnit {
         color: black;
         font-size: 70%; 
-        margin-right: 8px;
-        display: inline-block;vertical-align: bottom;
+        align-self: flex-end;
+        margin: 5px;
     }
-}
+
+    // Chart stuff going on here
+    .skills {
+        animation-name: skills;
+    }
+
+    main {
+        padding: 0 40px;
+    }
+
+    .t-6 {
+        padding: 10px 0;
+    }
+
+    section {
+        background: white;
+
+        article.skills {
+            width: auto;
+            height: auto;
+
+            p {
+                z-index: 2;
+                color: white;
+                padding: 10px;
+                position: relative;
+                box-sizing: border-box;
+                overflow: hidden;
+            }
+
+            div {
+            span:nth-child(1) {
+                z-index: -2;
+                position: absolute;
+                top: 0; bottom: 0; left: 0; right: 0;
+                margin: auto;
+                background: white;
+                height: 100%;
+                width: 100%;
+            }
+
+                span:nth-child(2) {
+                    z-index: -1;
+                    position: absolute;
+                    top: 0; bottom: 0; left: 0; right: 0;
+                    background: blueviolet;
+                    height: 100%;
+                }
+            }
+
+            div:nth-child(1) {
+                span:nth-child(2) {
+                    width: 75%;
+                    animation-delay: 0.05s;
+                }
+            }
+
+            div:nth-child(2) {
+                span:nth-child(2) {
+                    width: 25%;
+                    animation-delay: 0.10s;
+                }
+            }    
+        }
+    }
+
+    .skills {
+        animation: skills 1.25s cubic-bezier(.17,.67,0,1);
+    }
+
+    @keyframes skills {
+        0% {
+            left: -500px;
+            opacity: 0;
+        }
+        100% {
+            left: 0;
+            opacity: 1;
+        }
+    }
+}   
