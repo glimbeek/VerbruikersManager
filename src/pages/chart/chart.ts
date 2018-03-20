@@ -37,14 +37,14 @@ export class ChartPage {
 
   swipeEvent(e) {
     console.log('Got swiped!');
-    if(e.direction == '2'){
-      console.log('Swiped left');
-      this.navCtrl.parent.select(2);
-    }
-    else if(e.direction == '4'){
-      console.log('Swiped right');
-      this.navCtrl.parent.select(0);
-    }
+    // if(e.direction == '2'){
+    //   console.log('Swiped left');
+    //   this.navCtrl.parent.select(2);
+    // }
+    // else if(e.direction == '4'){
+    //   console.log('Swiped right');
+    //   this.navCtrl.parent.select(0);
+    // }
   }
 
   showLoading() {

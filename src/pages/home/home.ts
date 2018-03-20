@@ -71,17 +71,18 @@ export class HomePage {
 
   swipeEvent(e) {
     console.log('Got swiped!');
-    let currentIndex = this.navCtrl.getActive();
-    console.log('Current index is', currentIndex);
-    if(e.direction == '2'){
-      console.log('Swiped left');
-      this.navCtrl.parent.select(1); // tab2Root = ChartPage;
-    }
-    else if(e.direction == '4'){
-      console.log('Swiped right');
-      // We are already on HOME so no need to respond to swiping right
-      //this.navCtrl.parent.select(0);
-    }
+    // This needs a smooth transition, and as of yet this isn's support by IONIC
+    // let currentIndex = this.navCtrl.getActive();
+    // console.log('Current index is', currentIndex);
+    // if(e.direction == '2'){
+    //   console.log('Swiped left');
+    //   this.navCtrl.parent.select(1); // tab2Root = ChartPage;
+    // }
+    // else if(e.direction == '4'){
+    //   console.log('Swiped right');
+    //   // We are already on HOME so no need to respond to swiping right
+    //   //this.navCtrl.parent.select(0);
+    // }
   }
 
   // We can remove this button eventually.
