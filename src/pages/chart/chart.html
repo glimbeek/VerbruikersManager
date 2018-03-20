@@ -22,14 +22,7 @@
   </ion-header>
 
 
-
   <ion-content (swipe)="swipeEvent($event)" padding>
-
-<p>Lol kek bur!</p>
-<p>Lol kek bur!</p>
-<p>Lol kek bur!</p>
-<p>Lol kek bur!</p>
-<p>Lol kek bur!</p>
 
   <div [ngSwitch]="interval">
     <ion-list *ngSwitchCase="'day'">
@@ -54,33 +47,7 @@
     </ion-list>
     <ion-list *ngSwitchCase="'overall'">
       Overall data: {{dataOverall}}
-      <!-- <div style="display: block">
-        <base-chart
-                [datasets]="barChartData"
-                [labels]="barChartLabels"
-                [options]="barChartOptions"
-                [legend]="barChartLegend"
-                [chartType]="barChartType"
-                (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></base-chart>
-      </div>
-      <button (click)="randomize()">Update</button> -->
     </ion-list>
-</div>   
-<!-- 
-    <ion-list #scheduleList [hidden]="shownSessions === 0">
-    <div>
-        <div style="display: block">
-          <canvas baseChart
-                  [datasets]="barChartData"
-                  [labels]="barChartLabels"
-                  [options]="barChartOptions"
-                  [legend]="barChartLegend"
-                  [chartType]="barChartType"
-                  (chartHover)="chartHovered($event)"
-                  (chartClick)="chartClicked($event)"></canvas>
-        </div>
-        <button (click)="randomize()">Update</button>
-      </div>
-    </ion-list> -->
+  </div>   
+
 </ion-content>

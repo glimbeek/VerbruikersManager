@@ -77,7 +77,7 @@ export class ChartPage {
     }
     switch(value) {
       case "year": 
-      this.showLoading()
+      
       this.dataDay = "year BLALALA"
       this.getCountries(); 
     }   
@@ -100,6 +100,7 @@ export class ChartPage {
   }
 
   getCountries() {
+    this.showLoading()
     this.countriesProvider.getCountries()
        .subscribe(
          countries => this.countries = countries,
