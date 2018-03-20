@@ -47,6 +47,7 @@ import { RestProvider } from '../providers/rest/rest';
  * Good place to steal some code:
  * https://github.com/ionic-team/ionic-conference-app
  * https://demo.mobiscroll.com
+ * http://www.ionicsync.com/
  * 
  * Common Cordova / Ionic build errors
  * https://docs.buddybuild.com/troubleshooting/frameworks/cordova_ionic.html

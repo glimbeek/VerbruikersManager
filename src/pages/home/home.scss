@@ -21,7 +21,8 @@ page-home {
     .left {
         width: calc(50% - 18px) !important;
         float: left;
-        margin-right: 0px
+        margin-top: 10px;
+        margin-right: 0px;
     }
     .right {
         width: calc(50% - 18px) !important;
@@ -82,7 +83,7 @@ page-home {
                 position: absolute;
                 top: 0; bottom: 0; left: 0; right: 0;
                 margin: auto;
-                background: white;
+                background: lightblue;
                 height: 100%;
                 width: 100%;
             }
@@ -98,14 +99,14 @@ page-home {
 
             div:nth-child(1) {
                 span:nth-child(2) {
-                    width: 75%;
+                    // width: 75%;
                     animation-delay: 0.05s;
                 }
             }
 
             div:nth-child(2) {
                 span:nth-child(2) {
-                    width: 25%;
+                    // width: 25%;
                     animation-delay: 0.10s;
                 }
             }    

@@ -23,8 +23,13 @@
 
 
 
-<ion-content padding>
+  <ion-content (swipe)="swipeEvent($event)" padding>
 
+<p>Lol kek bur!</p>
+<p>Lol kek bur!</p>
+<p>Lol kek bur!</p>
+<p>Lol kek bur!</p>
+<p>Lol kek bur!</p>
 
   <div [ngSwitch]="interval">
     <ion-list *ngSwitchCase="'day'">

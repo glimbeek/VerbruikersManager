@@ -7,6 +7,8 @@ import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
 import { AppRate } from '@ionic-native/app-rate';
 
+import { ChartPage } from '../../pages/chart/chart';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -67,6 +69,21 @@ export class HomePage {
     }); // End of Storage GET
   } // End of ionViewDidLoad
 
+  swipeEvent(e) {
+    console.log('Got swiped!');
+    let currentIndex = this.navCtrl.getActive();
+    console.log('Current index is', currentIndex);
+    if(e.direction == '2'){
+      console.log('Swiped left');
+      this.navCtrl.parent.select(1); // tab2Root = ChartPage;
+    }
+    else if(e.direction == '4'){
+      console.log('Swiped right');
+      // We are already on HOME so no need to respond to swiping right
+      //this.navCtrl.parent.select(0);
+    }
+  }
+
   // We can remove this button eventually.
   clearCache() {
     this.storage.ready().then(() =>
@@ -86,8 +103,9 @@ export class HomePage {
       this.powerUsed = this.randomInt(122,42);;
       this.gasUsed = this.randomInt(32,12);
 
-      var elements = document.getElementsByName("skills");
+      var elements = document.getElementsByName("powerusedbar");
       for (var i = 0; i < elements.length; i++) {
+          console.log('Found the bar!');
           elements[i].style.width=(this.powerProduced+"px");
       }
     }, 1000); 

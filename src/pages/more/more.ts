@@ -80,6 +80,18 @@ export class MorePage {
     }
   }
 
+  swipeEvent(e) {
+    console.log('Got swiped!');
+    if(e.direction == '2'){
+      console.log('Swiped left');
+      //this.navCtrl.parent.select(1);
+    }
+    else if(e.direction == '4'){
+      console.log('Swiped right');
+      this.navCtrl.parent.select(2);
+    }
+  }
+
   openSettingsPage() { 
     console.log('Pusing SettingsPage');
     this.navCtrl.push(SettingsPage);
