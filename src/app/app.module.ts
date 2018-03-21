@@ -47,13 +47,19 @@ import * as highcharts from 'Highcharts';
 
 
 /*
- * Good place to steal some code:
+ * **** CSS Prefixer for cross browser compatiblility:
+ * http://prefixr.cloudvent.net/
+ * 
+ * **** Good place to steal some code: ****
  * https://github.com/ionic-team/ionic/tree/v3
  * https://github.com/ionic-team/ionic-conference-app
  * https://demo.mobiscroll.com
  * http://www.ionicsync.com/
  * 
- * Common Cordova / Ionic build errors
+ * **** Inspiration nation: ****
+ * https://market.ionicframework.com 
+ * 
+ * **** Common Cordova / Ionic build errors **** 
  * https://docs.buddybuild.com/troubleshooting/frameworks/cordova_ionic.html
  * 
  * Known problem: --livereload not working cordova.js doesn't get loaded: 
