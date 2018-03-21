@@ -45,6 +45,13 @@ import { RestProvider } from '../providers/rest/rest';
 import { ChartModule } from 'angular2-highcharts';
 import * as highcharts from 'Highcharts';
 
+declare var require: any;
+export function highchartsFactory() {
+    const hc = require('highcharts/highstock');
+    const dd = require('highcharts/modules/exporting');
+    dd(hc);
+    return hc;
+}
 
 /*
  * **** CSS Prefixer for cross browser compatiblility:
