@@ -42,17 +42,6 @@ import { Device } from '@ionic-native/device';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { RestProvider } from '../providers/rest/rest';
 
-import { ChartModule } from 'angular2-highcharts';
-import * as highcharts from 'Highcharts';
-
-declare var require: any;
-export function highchartsFactory() {
-    const hc = require('highcharts/highstock');
-    const dd = require('highcharts/modules/exporting');
-    dd(hc);
-    return hc;
-}
-
 /*
  * **** CSS Prefixer for cross browser compatiblility:
  * http://prefixr.cloudvent.net/
@@ -122,8 +111,7 @@ export function highchartsFactory() {
       apiKey: 'AIzaSyAr3SZit3mMmAcFbZ3bNKhNMX5DZ_yaeCU' //Google Maps API Key
     }),
     HttpModule,
-    HttpClientModule,
-    ChartModule.forRoot(highcharts)
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
