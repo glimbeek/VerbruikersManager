@@ -42,9 +42,13 @@ import { Device } from '@ionic-native/device';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { RestProvider } from '../providers/rest/rest';
 
+import { ChartModule } from 'angular2-highcharts';
+import * as highcharts from 'Highcharts';
+
 
 /*
  * Good place to steal some code:
+ * https://github.com/ionic-team/ionic/tree/v3
  * https://github.com/ionic-team/ionic-conference-app
  * https://demo.mobiscroll.com
  * http://www.ionicsync.com/
@@ -105,7 +109,8 @@ import { RestProvider } from '../providers/rest/rest';
       apiKey: 'AIzaSyAr3SZit3mMmAcFbZ3bNKhNMX5DZ_yaeCU' //Google Maps API Key
     }),
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartModule.forRoot(highcharts)
   ],
   bootstrap: [IonicApp],
   entryComponents: [

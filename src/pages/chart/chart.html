@@ -26,27 +26,31 @@
 
   <div [ngSwitch]="interval">
     <ion-list *ngSwitchCase="'day'">
-      Daily data overview: {{dataDay}}
+        <!-- {{dataDay}} -->
+        <chart [options] = "chartOptionsDaily" style="display: block" type = "chart"> </chart>
     </ion-list>
     <ion-list *ngSwitchCase="'month'">
-      Monthly data overview: {{datamonth}}
-      <ion-item *ngFor="let user of users">
+        <!-- {{datamonth}} -->
+        <chart [options] = "chartOptionsMonthly" style="display: block" type = "chart"> </chart>
+      <!-- <ion-item *ngFor="let user of users">
         <h2>{{user.name}}</h2>
         <p>{{user.email}}</p>
-      </ion-item>
+      </ion-item> -->
     </ion-list>
     <ion-list *ngSwitchCase="'year'">
-      Yearly data overview: {{dataYearly}}
-      <ion-item *ngFor="let c of countries">
+      <!-- {{dataYearly}} -->
+      <chart [options] = "chartOptionsYearly" style="display: block" type = "chart"> </chart>
+      <!-- <ion-item *ngFor="let c of countries">
         <ion-avatar item-left>
           <img src="{{c.flag}}">
         </ion-avatar>
         <h2>{{c.name}}</h2>
         <p>Capital: {{c.capital}}, Region: {{c.region}}</p>
-      </ion-item>
+      </ion-item> -->
     </ion-list>
     <ion-list *ngSwitchCase="'overall'">
-      Overall data: {{dataOverall}}
+      <!-- {{dataOverall}} -->
+      <chart [options] = "chartOptionsOverall" style="display: block" type = "chart"> </chart>
     </ion-list>
   </div>   
 
