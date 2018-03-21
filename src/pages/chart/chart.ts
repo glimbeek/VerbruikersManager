@@ -4,8 +4,6 @@ import { LoadingController, IonicPage, NavController, NavParams } from 'ionic-an
 import { RestProvider } from '../../providers/rest/rest';
 import { CountriesProvider } from '../../providers/countries/countries'
 
-import * as HighCharts from 'highcharts';
-
 @IonicPage()
 @Component({
   selector: 'page-chart',
