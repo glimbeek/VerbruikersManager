@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { LoadingController, IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { RestProvider } from '../../providers/rest/rest';
-import { CountriesProvider } from '../../providers/countries/countries'
+import { CountriesProvider } from '../../providers/countries/countries';
 
 @IonicPage()
 @Component({

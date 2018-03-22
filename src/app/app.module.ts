@@ -45,10 +45,20 @@ import { RestProvider } from '../providers/rest/rest';
 import { ChartModule } from 'angular2-highcharts';
 import * as highcharts from 'Highcharts';
 
-declare var require: any;
-export function highchartsFactory() {
-  return require('highcharts');
-}
+/*
+ * To Do:
+ * - Skeleton screens loading:
+ *    https://blog.ionicframework.com/improved-perceived-performance-with-skeleton-screens/
+ * 
+ * - Fix highcharts or implement different charts solution
+ * 
+ * - Change loading/splash screen
+ * 
+ * - Rename app:
+ *    from app.verbruiksmanager.apk to com.verbruiksmanager.app
+ * 
+ */
+
 
 /*
  * **** CSS Prefixer for cross browser compatiblility:
@@ -63,6 +73,10 @@ export function highchartsFactory() {
  * **** Inspiration nation: ****
  * https://market.ionicframework.com 
  * 
+ */
+
+
+/*
  * **** Common Cordova / Ionic build errors **** 
  * https://docs.buddybuild.com/troubleshooting/frameworks/cordova_ionic.html
  * 
