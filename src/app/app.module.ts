@@ -42,12 +42,7 @@ import { VoteProvider } from '../providers/vote/vote';
 
 
 const config = {
-    apiKey: <apiKey>,
-    authDomain: <yourauthDomain>,
-    databaseURL: <yourdatabaseURL>,
-    projectId: <yourprojectId>,
-    storageBucket: <yourstoragebucket>,
-    messagingSenderId: <yoursenderIdhere>
+
   };
 
 /*
