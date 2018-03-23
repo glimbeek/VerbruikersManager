@@ -7,26 +7,6 @@
 <ion-content (swipe)="swipeEvent($event)" padding class="greyish">
   <!-- <p>< ></p> -->
 
-  <div text-center>
-    <h5>Product</h5>
-    <img width="180" height="180" src="https://www.hoyhoy.nl/wp-content/uploads/2017/10/nlex-inzicht.png"/>
-    <div text-center>
-      <ion-fab center style="padding-top: 15px;">
-        <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
-        <ion-fab-list side="left">
-          <button ion-fab mini (click)="dope()" color="secondary"><ion-icon name="thumbs-up"></ion-icon></button>
-        </ion-fab-list>
-        <ion-fab-list side="right">
-          <button ion-fab mini (click)="nope()" color="danger"><ion-icon name="thumbs-down"></ion-icon></button>
-        </ion-fab-list>
-      </ion-fab>
-    </div>
-    <div style="padding-top:10px;">
-      <canvas #chartCanvas></canvas>
-    </div>
-  </div>
-
-
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
     pullingText="Pull to refresh"

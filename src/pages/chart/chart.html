@@ -23,43 +23,32 @@
 
 
   <ion-content (swipe)="swipeEvent($event)" padding>
-
-      <ion-card>
-          <ion-card-header>
-            Line Chart
-          </ion-card-header>
-          <ion-card-content>
-            <canvas #lineCanvas></canvas>
-          </ion-card-content>
-        </ion-card>
     
+    <!-- <ion-item *ngFor="let user of users">
+      <h2>{{user.name}}</h2>
+      <p>{{user.email}}</p>
+    </ion-item> -->
+
   <div [ngSwitch]="interval">
     <ion-list *ngSwitchCase="'day'">
-        <!-- {{dataDay}} -->
-        <!-- <chart [options] = "chartOptionsDaily" style="display: block" type = "chart"> </chart> -->
+      <div text-center>
+        <canvas #chartCanvas></canvas>
+      </div>
     </ion-list>
     <ion-list *ngSwitchCase="'month'">
-        <!-- {{datamonth}} -->
-        <!-- <chart [options] = "chartOptionsMonthly" style="display: block" type = "chart"> </chart> -->
-      <!-- <ion-item *ngFor="let user of users">
-        <h2>{{user.name}}</h2>
-        <p>{{user.email}}</p>
-      </ion-item> -->
+      <div text-center>
+        <canvas #chartCanvas></canvas>
+      </div>   
     </ion-list>
     <ion-list *ngSwitchCase="'year'">
-      <!-- {{dataYearly}} -->
-      <!-- <chart [options] = "chartOptionsYearly" style="display: block" type = "chart"> </chart> -->
-      <!-- <ion-item *ngFor="let c of countries">
-        <ion-avatar item-left>
-          <img src="{{c.flag}}">
-        </ion-avatar>
-        <h2>{{c.name}}</h2>
-        <p>Capital: {{c.capital}}, Region: {{c.region}}</p>
-      </ion-item> -->
+      <div text-center>
+        <canvas #chartCanvas></canvas>
+      </div>
     </ion-list>
     <ion-list *ngSwitchCase="'overall'">
-      <!-- {{dataOverall}} -->
-      <!-- <chart [options] = "chartOptionsOverall" style="display: block" type = "chart"> </chart> -->
+      <div text-center>
+        <canvas #chartCanvas></canvas>
+      </div>
     </ion-list>
   </div>   
 

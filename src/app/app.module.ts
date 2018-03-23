@@ -42,13 +42,13 @@ import { VoteProvider } from '../providers/vote/vote';
 
 
 const config = {
-  // apiKey: <apiKey>,
-  // authDomain: <yourauthDomain>,
-  // databaseURL: <yourdatabaseURL>,
-  // projectId: <yourprojectId>,
-  // storageBucket: <yourstoragebucket>,
-  // messagingSenderId: <yoursenderIdhere>
-  };
+  apiKey: 'AIzaSyDuTs7XL8nHJNf7HpK49Y7oPXQ27EisXQQ',
+  authDomain: 'fir-verbruiksmanager.firebaseapp.com',
+  databaseURL: 'https://fir-verbruiksmanager.firebaseapp.com',
+  projectId: 'firebase-verbruiksmanager',
+  storageBucket: 'fir-verbruiksmanager.firebaseapp.com',
+  messagingSenderId: '824350061771'
+};
 
 /*
  * To Do:
@@ -79,6 +79,9 @@ const config = {
  * 
  * **** Inspiration nation: ****
  * https://market.ionicframework.com 
+ * 
+ * **** Good tutorial videos ****
+ * http://tphangout.com/ionic-3-charts/
  * 
  */
 

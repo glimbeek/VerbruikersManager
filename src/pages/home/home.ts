@@ -1,29 +1,17 @@
 import { Platform, ModalController } from 'ionic-angular';
 import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Chart } from 'chart.js'
-import { VoteProvider } from '../../providers/vote/vote'
 
 import { Storage } from '@ionic/storage';
 
 import { AlertController } from 'ionic-angular';
 import { AppRate } from '@ionic-native/app-rate';
 
-import { ChartPage } from '../../pages/chart/chart';
-
-
-
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  @ViewChild('chartCanvas') chartCanvas;
-
-  dopes: number;
-  nopes: number;
-  chartVar: any;
  
   x: number = 71;
 
@@ -31,11 +19,13 @@ export class HomePage {
   powerUsed: any = "39.1";
   gasUsed: any = "7.3";
 
-  constructor(public platform: Platform, public navCtrl: NavController, public storage: Storage, public alertCtrl: AlertController, public appRate: AppRate, public voteService: VoteProvider) {
-    
+  constructor(public platform: Platform, public navCtrl: NavController, public storage: Storage, public alertCtrl: AlertController, public appRate: AppRate) {    
   }
+
   
   ionViewDidLoad() {
+    console.log('IonViewDidLoad')
+    
     this.storage.ready().then(() => { // Check if storage is ready
       this.storage.get('TimesStarted').then((val) => { // If the key TimesStarted exists in storage, get it's value
         if(val == this.x ) { // If the value is equal to x, show the rating pop-ups
