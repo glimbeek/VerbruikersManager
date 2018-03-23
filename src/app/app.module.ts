@@ -42,7 +42,12 @@ import { VoteProvider } from '../providers/vote/vote';
 
 
 const config = {
-
+  // apiKey: <apiKey>,
+  // authDomain: <yourauthDomain>,
+  // databaseURL: <yourdatabaseURL>,
+  // projectId: <yourprojectId>,
+  // storageBucket: <yourstoragebucket>,
+  // messagingSenderId: <yoursenderIdhere>
   };
 
 /*
@@ -53,9 +58,6 @@ const config = {
  * - Fix highcharts or implement different charts solution
  * 
  * - Change loading/splash screen
- * 
- * - Rename app:
- *    From app.verbruiksmanager.apk to com.verbruiksmanager.app
  * 
  * - Add live deploy:
  *    https://ionicframework.com/docs/pro/deploy/

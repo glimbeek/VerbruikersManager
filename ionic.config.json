@@ -1,5 +1,5 @@
 {
-  "name": "app.verbruiksmanager.apk",
+  "name": "com.verbruiksmanager.app",
   "app_id": "34645d4a",
   "type": "ionic-angular",
   "integrations": {
