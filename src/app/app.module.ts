@@ -15,35 +15,40 @@ import { SettingsPage } from '../pages/settings/settings';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { TabsPage } from '../pages/tabs/tabs';
-
 import { DayPage } from '../pages/day/day';
 import { MonthPage } from '../pages/month/month';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { CountriesProvider } from '../providers/countries/countries';
-import { StorageServiceProvider } from '../providers/storage-service/storage-service';
 
 import { IonicStorageModule } from '@ionic/storage';
-
-import { ChartsModule } from 'ng2-charts';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AgmCoreModule } from '@agm/core'; // https://angular-maps.com/
-
 import { AppRate } from '@ionic-native/app-rate';
-
 import { Shake } from '@ionic-native/shake';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
-
 import { EmailComposer } from '@ionic-native/email-composer';
 import { AppVersion } from '@ionic-native/app-version';
 import { Device } from '@ionic-native/device';
 
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { RestProvider } from '../providers/rest/rest';
+import { CountriesProvider } from '../providers/countries/countries';
+import { StorageServiceProvider } from '../providers/storage-service/storage-service';
 
-import { ChartModule } from 'angular2-highcharts';
-import * as highcharts from 'Highcharts';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { VoteProvider } from '../providers/vote/vote';
+
+
+const config = {
+    apiKey: <apiKey>,
+    authDomain: <yourauthDomain>,
+    databaseURL: <yourdatabaseURL>,
+    projectId: <yourprojectId>,
+    storageBucket: <yourstoragebucket>,
+    messagingSenderId: <yoursenderIdhere>
+  };
 
 /*
  * To Do:
@@ -55,10 +60,15 @@ import * as highcharts from 'Highcharts';
  * - Change loading/splash screen
  * 
  * - Rename app:
- *    from app.verbruiksmanager.apk to com.verbruiksmanager.app
+ *    From app.verbruiksmanager.apk to com.verbruiksmanager.app
  * 
+ * - Add live deploy:
+ *    https://ionicframework.com/docs/pro/deploy/
+ * 
+ * - Limit ratings prompt up to three times in a 365-day period https://developer.apple.com/app-store/ratings-and-reviews/
+ * - Keep track of last prompt date
+ * - Keep track of user prompt responce, on canceling we need to ask again after x amount of time.
  */
-
 
 /*
  * **** CSS Prefixer for cross browser compatiblility:
@@ -128,13 +138,13 @@ import * as highcharts from 'Highcharts';
       name: 'glimbeek__dbVerbruiksManager',
          driverOrder: ['sqlite', 'indexeddb', 'websql']
     }),
-    ChartsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAr3SZit3mMmAcFbZ3bNKhNMX5DZ_yaeCU' //Google Maps API Key
     }),
     HttpModule,
     HttpClientModule,
-    ChartModule.forRoot(highcharts)
+    AngularFireModule.initializeApp(config),
+    AngularFirestoreModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -167,7 +177,8 @@ import * as highcharts from 'Highcharts';
     Device,
     LocalNotifications,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RestProvider
+    RestProvider,
+    VoteProvider
   ]
 })
 export class AppModule {}
