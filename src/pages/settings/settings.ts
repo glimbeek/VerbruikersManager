@@ -17,14 +17,18 @@ export class SettingsPage {
   themeSaved: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public event: Events, public settings: SettingsProvider) {
-    this.themeSaved = "dark-theme";
   }
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage'); 
 
-    this.themeSaved = this.settings.getSettingTheme();
-    console.log('SettingsPage settings.ts: Theme gotten from settingsprovider:' , this.themeSaved)
+     // Check if there is a theme in local storage
+     this.settings.getSettingTheme().then((value) => {
+      console.log('Did we get the return1? :', value);
+      // If there is, set it!
+      this.themeSaved = value;
+      console.log('SettingsPage settings.ts: Theme gotten from settingsprovider:' , this.themeSaved)
+    })   
 
     // We stil need to move this to the SettingsProvider
     this.storage.ready().then(() => { // Check if the storage ready for accessing      

@@ -11,7 +11,7 @@
     }
     ion-list {
       .item {
-        background-color: darken($light-background, 1.5%);
+        background-color: ($light-light);
       }
     }
   }

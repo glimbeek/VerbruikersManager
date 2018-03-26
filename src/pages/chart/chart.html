@@ -23,13 +23,8 @@
 
 
   <ion-content (swipe)="swipeEvent($event)" padding>
-    
-    <!-- <ion-item *ngFor="let user of users">
-      <h2>{{user.name}}</h2>
-      <p>{{user.email}}</p>
-    </ion-item> -->
 
-  <div [ngSwitch]="interval">
+  <div [ngSwitch]="interval" class="white">
     <ion-list *ngSwitchCase="'day'">
       <div text-center>
         <canvas #chartCanvas></canvas>

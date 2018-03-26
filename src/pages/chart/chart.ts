@@ -51,7 +51,7 @@ export class ChartPage {
 
     setTimeout(() => {
       this.dailyChart()
-    },1000);
+    },250);
 
 
     this.hideLoading();
@@ -221,26 +221,30 @@ export class ChartPage {
     switch(value) {
       case "day":       
       setTimeout(() => {
-        this.dailyChart()
-      },1000);      
+        this.showLoading();
+        this.dailyChart();
+        this.hideLoading();
+      },250);      
     }
     switch(value) {
       case "month":
       setTimeout(() => {
-        this.monthlyChart()
-      },1000);      
+        this.showLoading();
+        this.monthlyChart();
+        this.hideLoading();
+      },250);      
     }
     switch(value) {
       case "year": 
       setTimeout(() => {
         this.yearlyChart()
-      },1000);   
+      },250);   
     }   
     switch(value) {
       case "overall": 
       setTimeout(() => {
         this.overallChart()
-      },1000);   
+      },250);   
     }    
     
   }
