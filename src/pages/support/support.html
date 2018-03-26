@@ -1,0 +1,33 @@
+<!--
+  Generated template for the SupportPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>support</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-list>
+        <ion-item>
+          <ion-icon name="star" item-start></ion-icon>
+          Rate app
+          <ion-icon name="arrow-forward" item-end></ion-icon>
+        </ion-item>
+        <ion-item (click)="openSendEmail()">
+          <ion-icon name="create" item-start></ion-icon>
+          Feedback
+          <ion-icon name="arrow-forward" item-end></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="information-circle" item-start></ion-icon>
+            Version: {{appVersionNumber}}
+        </ion-item>    
+      </ion-list>
+</ion-content>

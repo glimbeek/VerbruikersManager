@@ -8,27 +8,40 @@
 
 
 <ion-content (swipe)="swipeEvent($event)">
-  <ion-list >
-    <ion-item (click)="openSettingsPage()">
-        <ion-icon name="settings" item-start></ion-icon>
-        Settings          
-      <ion-icon name="arrow-forward" item-end></ion-icon>
-    </ion-item>
-  </ion-list>
   <ion-list>
-    <ion-item>
-      <ion-icon name="star" item-start></ion-icon>
-      Rate app
+    <ion-item (click)="openSettingsPage()">
+      <ion-icon name="settings" item-start></ion-icon>
+      Settings          
       <ion-icon name="arrow-forward" item-end></ion-icon>
     </ion-item>
-    <ion-item (click)="openSendEmail()">
-      <ion-icon name="create" item-start></ion-icon>
-      Feedback
-      <ion-icon name="arrow-forward" item-end></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-icon name="information-circle" item-start></ion-icon>
-        Version: {{appVersionNumber}}
-    </ion-item>    
   </ion-list>
+
+  <ion-list>
+    <ion-item (click)="openSupportPage()">
+      <ion-icon name="hammer" item-start></ion-icon>
+      App Support
+      <ion-icon name="arrow-forward" item-end></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      Meter readings
+    </ion-list-header>
+    <ion-item>
+      <ion-icon name="flash" item-start></ion-icon>
+      Electricity (kWh)      
+      <ion-input type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="flame" item-start></ion-icon>
+      Gas (m³)
+      <ion-input type="number"></ion-input>
+    </ion-item>
+  </ion-list>
+  <div class="wrapper">
+      <div class="small">
+          {{ 'MOREPAGE.METERREADINGINFOTEXT' | translate }}
+      </div>
+    </div>
 </ion-content>

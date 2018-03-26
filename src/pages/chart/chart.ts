@@ -120,20 +120,30 @@ export class ChartPage {
     // Start of yearlyChart
     yearlyChart() {
       this.chartVar = new Chart(this.chartCanvas.nativeElement, {
-        type: 'line',
+        type: 'bar',
         data: {
-          labels: ['06:10', '06:20', '06:30', '06:40', '06:50', '07:00', '07:10'],
-          datasets: [{
-              data: [10, 23, 5, 99, 67, 43, 0],
-              backgroundColor: [
-                'rgba(41, 255, 122, 1)',
-                'rgba(255, 148, 12, 1)'
-              ]
-          }]
+          labels: ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul'],
+          datasets: [
+            {
+              label: "Power Produced",
+              backgroundColor: "blue",
+              data: [3,7,4,9,3,5,6]
+            },
+            {
+              label: "Power Used",
+              backgroundColor: "red",
+              data: [4,3,5,9,3,5,6]
+            },
+            {
+              label: "Gas Used",
+              backgroundColor: "green",
+              data: [7,2,6,9,3,5,6]
+            }            
+          ]
         },
         options: {
           legend: {
-            display: false
+            display: true
           },
           tooltips: {
             enabled: true
@@ -145,20 +155,30 @@ export class ChartPage {
     // Start of overallChart
     overallChart() {
       this.chartVar = new Chart(this.chartCanvas.nativeElement, {
-        type: 'line',
+        type: 'bar',
         data: {
-          labels: ['06:10', '06:20', '06:30', '06:40', '06:50', '07:00', '07:10'],
-          datasets: [{
-              data: [10, 23, 5, 99, 67, 43, 0],
-              backgroundColor: [
-                'rgba(41, 255, 122, 1)',
-                'rgba(255, 148, 12, 1)'
-              ]
-          }]
+          labels: ['2017', '2018'],
+          datasets: [
+            {
+              label: "Power Produced",
+              backgroundColor: "blue",
+              data: [600,3758]
+            },
+            {
+              label: "Power Used",
+              backgroundColor: "red",
+              data: [3113,3201]
+            },
+            {
+              label: "Gas Used",
+              backgroundColor: "green",
+              data: [1167,1131]
+            }            
+          ]
         },
         options: {
           legend: {
-            display: false
+            display: true
           },
           tooltips: {
             enabled: true

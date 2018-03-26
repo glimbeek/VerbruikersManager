@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { MonthPage } from './month';
+import { SupportPage } from './support';
 
 @NgModule({
   declarations: [
-    MonthPage,
+    SupportPage,
   ],
   imports: [
-    IonicPageModule.forChild(MonthPage),
+    IonicPageModule.forChild(SupportPage),
   ],
 })
-export class MonthPageModule {}
+export class SupportPageModule {}

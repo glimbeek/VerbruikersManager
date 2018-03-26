@@ -17,7 +17,7 @@
 
     <ion-item>
       <ion-icon name='flash' item-start style="color: red"></ion-icon>
-        <div class="title">Electricity used</div>
+        <div class="title">{{ 'HOMEPAGE.ELECTRICITYUSED' | translate }}</div>
         <div class="wrapper">
           <div class="value">{{powerUsed}}</div>
           <div class="energyUnit">kWh</div>
@@ -30,7 +30,7 @@
 
     <ion-item>
       <ion-icon name='flame' item-start style="color: red"></ion-icon>
-        <div class="title">Gas used</div>
+        <div class="title">{{ 'HOMEPAGE.GASUSED' | translate }}</div>
         <div class="wrapper">
           <div class="value">{{gasUsed}}</div>
           <div class="energyUnit">m³</div>
@@ -62,7 +62,7 @@
 
     <ion-item>
       <ion-icon name='flash' item-start style="color: #55acee"></ion-icon>
-      <div class="title">Electricity produced</div>
+      <div class="title">{{ 'HOMEPAGE.ELECTRICITYPRODUCED' | translate }}</div>
       <div class="wrapper">
         <div class="value">{{powerProduced}}</div>
         <div class="energyUnit">kWh</div>
@@ -77,10 +77,10 @@
         <section id="skills" class="toad-fullscreen">
              <article class="skills">
                  <div class="t-6">
-                     <p>Power used<span class="powerusedbar"></span><span class="skills" style="width: 85%"></span></p>
+                     <p>{{ 'HOMEPAGE.ELECTRICITYUSED' | translate }}<span class="powerusedbar"></span><span class="skills" style="width: 85%"></span></p>
                  </div>
                  <div class="t-6">
-                     <p>Power produced<span class="powerproducedbar"></span><span class="skills" style="width: 15%"></span></p>
+                     <p>{{ 'HOMEPAGE.ELECTRICITYPRODUCED' | translate }}<span class="powerproducedbar"></span><span class="skills" style="width: 15%"></span></p>
                  </div>
              </article>
          </section>

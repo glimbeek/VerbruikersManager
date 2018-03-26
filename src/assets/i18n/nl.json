@@ -1,0 +1,22 @@
+{
+    "TABSNAV": {
+        "HOME": "Home",
+        "CHARTS": "Grafieken",
+        "LOCATION": "Locatie",
+        "MORE": "Meer"
+    },
+    "HOMEPAGE": {
+        "WELCOME": "Welcome to ionic!",
+        "ELECTRICITYUSED": "Elektriciteit verbruikt",
+        "ELECTRICITYPRODUCED": "Elektriciteit opgewekt",
+        "GASUSED": "Gas verbruikt"
+    },
+    "MOREPAGE": {
+        "METERREADINGINFOTEXT": "Voeg je meterstanden toe..."
+    },
+    "SETTINGSAGE": {
+        "NOTIFICATION": "Ontvang notificaties",
+        "LANGUAGE": "Taal",
+        "THEME": "Thema"
+    }
+}

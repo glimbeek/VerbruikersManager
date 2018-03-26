@@ -1,0 +1,22 @@
+{
+    "TABSNAV": {
+        "HOME": "Home",
+        "CHARTS": "Charts",
+        "LOCATION": "Location",
+        "MORE": "More"
+    },
+    "HOMEPAGE": {
+        "WELCOME": "Welcome to ionic!",
+        "ELECTRICITYUSED": "Electricity used",
+        "ELECTRICITYPRODUCED": "Electricity produced",
+        "GASUSED": "Gas Used"
+    },
+    "MOREPAGE": {
+        "METERREADINGINFOTEXT": "Add your meter readings..."
+    },
+    "SETTINGSAGE": {
+        "NOTIFICATION": "Receive notifications",
+        "LANGUAGE": "Language",
+        "THEME": "Theme"
+    }
+}

@@ -17,26 +17,26 @@ export class IntroSlidesPage {
   HomePage: any;
   // item : any;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage){
-      this.HomePage = HomePage;
-    }  
-  
-    openTabsPage() {
-      this.storage.ready().then(() => { // Check if the storage ready for accessing
-        this.storage.set('FirstStart',true);
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage){
+    this.HomePage = HomePage;
+  }  
 
-        this.storage.get('TimesStarted').then((val) => {
-          console.log('TimesStarted is', val);
-          val = val + 1;
-          console.log('TimesStarted', val);
-          this.storage.set('TimesStarted', val);
-        });
+  openTabsPage() {
+    this.storage.ready().then(() => { // Check if the storage ready for accessing
+      this.storage.set('FirstStart',true);
+
+      this.storage.get('TimesStarted').then((val) => {
+        console.log('TimesStarted is', val);
+        val = val + 1;
+        console.log('TimesStarted', val);
+        this.storage.set('TimesStarted', val);
+      });
+
     });
 
     this.navCtrl.setRoot(TabsPage);
     this.navCtrl.popToRoot();
-  }
- 
+  } 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad IntroslidesPage');

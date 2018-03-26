@@ -1,7 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpModule, Http } from '@angular/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
@@ -15,8 +15,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { TabsPage } from '../pages/tabs/tabs';
-import { DayPage } from '../pages/day/day';
-import { MonthPage } from '../pages/month/month';
+import { SupportPage } from '../pages/support/support';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -31,6 +30,9 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { AppVersion } from '@ionic-native/app-version';
 import { Device } from '@ionic-native/device';
 
+import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { RestProvider } from '../providers/rest/rest';
 import { CountriesProvider } from '../providers/countries/countries';
@@ -39,6 +41,7 @@ import { StorageServiceProvider } from '../providers/storage-service/storage-ser
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { VoteProvider } from '../providers/vote/vote';
+import { SettingsProvider } from '../providers/settings/settings';
 
 
 const config = {
@@ -50,21 +53,27 @@ const config = {
   messagingSenderId: '824350061771'
 };
 
+export function createTranslateLoader(http: HttpClient) { 
+  console.log("TranslateLoader");
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
 /*
  * To Do:
  * - Skeleton screens loading:
  *    https://blog.ionicframework.com/improved-perceived-performance-with-skeleton-screens/
- * 
- * - Fix highcharts or implement different charts solution
- * 
+ * - Add themes
+ * - Complete app translation
+ * - Fix version number display
+ * - Fix version number in mail
+ * - Add functionality to safe meter readings - Or can we get this info from the Domoticz data?
  * - Change loading/splash screen
- * 
  * - Add live deploy:
  *    https://ionicframework.com/docs/pro/deploy/
- * 
- * - Limit ratings prompt up to three times in a 365-day period https://developer.apple.com/app-store/ratings-and-reviews/
- * - Keep track of last prompt date
- * - Keep track of user prompt responce, on canceling we need to ask again after x amount of time.
+ * - Implement app rating 
+ *    Limit ratings prompt up to three times in a 365-day period https://developer.apple.com/app-store/ratings-and-reviews/
+ *    Keep track of last prompt date
+ *    Keep track of user prompt responce, on canceling we need to ask again after x amount of time.
  */
 
 /*
@@ -128,8 +137,7 @@ const config = {
     SplashPage,
     MorePage,
     ChartPage,
-    DayPage,
-    MonthPage
+    SupportPage
   ],
   imports: [
     BrowserModule,
@@ -145,6 +153,13 @@ const config = {
     HttpClientModule,
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -159,8 +174,7 @@ const config = {
     SplashPage,
     MorePage,
     ChartPage,
-    DayPage,
-    MonthPage
+    SupportPage
   ],
   providers: [
     StatusBar,
@@ -178,7 +192,9 @@ const config = {
     LocalNotifications,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider,
-    VoteProvider
+    VoteProvider,
+    TranslateService,
+    SettingsProvider
   ]
 })
 export class AppModule {}

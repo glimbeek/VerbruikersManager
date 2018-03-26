@@ -7,11 +7,21 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="settings">
+
   <ion-list>
     <ion-item>
-      <ion-label>Receive notifications?</ion-label>
+      <ion-label>{{ 'SETTINGSAGE.NOTIFICATION' | translate }}</ion-label>
       <ion-toggle [(ngModel)]="toggleReceiveNotificationsStatus" (ionChange)="toggleReceiveNotifications()"></ion-toggle>
     </ion-item>
+
+    <ion-item>
+      <ion-label>{{ 'SETTINGSAGE.THEME' | translate }}</ion-label>
+      <ion-select [(ngModel)]="themeSaved" (ionChange)="themeChange($event)" interface="popover">
+        <ion-option value="light-theme">Light</ion-option>
+        <ion-option value="dark-theme">Dark</ion-option>
+      </ion-select>
+    </ion-item>
   </ion-list>
+  
 </ion-content>

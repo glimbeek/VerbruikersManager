@@ -1,6 +1,7 @@
 import { Platform, ModalController } from 'ionic-angular';
 import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
 
 import { Storage } from '@ionic/storage';
 
@@ -19,7 +20,7 @@ export class HomePage {
   powerUsed: any = "39.1";
   gasUsed: any = "7.3";
 
-  constructor(public platform: Platform, public navCtrl: NavController, public storage: Storage, public alertCtrl: AlertController, public appRate: AppRate) {    
+  constructor(public platform: Platform, public navCtrl: NavController, public storage: Storage, public alertCtrl: AlertController, public appRate: AppRate, public translate: TranslateService) {    
   }
 
   
